@@ -25,12 +25,6 @@
                 height: 100vh;
             }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
             .position-ref {
                 position: relative;
             }
@@ -42,7 +36,7 @@
             }
 
             .content {
-                text-align: center;
+                text-align: left;
             }
 
             .title {
@@ -65,7 +59,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -86,7 +80,7 @@
 
                 @foreach ($users as $user)
 
-                <li>{{$user->name}} - {{$user->email}}</li>
+                <li><img src="{{asset('/storage/profiles/' . $user->profile_photo)}}"> - {{$user->name}} - {{$user->email}}</li>
 
 
 
