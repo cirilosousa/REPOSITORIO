@@ -97,7 +97,7 @@
                 <!-- ------------------ -->
 
                 <div class="links">
-                    <a href="{{route('example')}}">Example</a>
+                    <!--<a href="{{route('example')}}">Example</a> -->
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://forge.laravel.com">Forge</a>
