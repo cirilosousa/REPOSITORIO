@@ -73,22 +73,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Here they are
+                    WELCOME PAGE
                 </div>
-
-                <!-- ------------------ -->
-
-                @foreach ($users as $user)
-
-                <li><img src="{{asset('/storage/profiles/' . $user->profile_photo)}}"> - {{$user->name}} - {{$user->email}}</li>
-
-
-
-                @endforeach
-
-
-
-                <!-- ------------------ -->
 
                 <div class="links">
                     {{-- <a href="{{route('example')}}">Example</a>--}}

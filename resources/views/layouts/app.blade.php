@@ -56,15 +56,51 @@
                                         {{ __('Logout') }}
                                     </a>
 
+                                    <a class="dropdown-item" href="{{ route('profiles') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('profile-form').submit();">
+                                        {{ __('My Profile') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('profiles') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('profiles-form').submit();">
+                                        {{ __('User Profiles') }}
+                                    </a>
+
+                                    @if (Auth::user()->admin)
+                                    <a class="dropdown-item" href="{{ route('users') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('users-form').submit();">
+                                        {{ __('Administrate Users') }}
+                                    </a>
+                                    @endif
+
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                            
+                                    <!-- ALTERAR ESTE -->
+                                    <form id="profile-form" action="{{ route('profiles') }}" method="GET" style="display: none;">
+                                        @csrf
+                                    </form>
+
+                                    <form id="profiles-form" action="{{ route('profiles') }}" method="GET" style="display: none;">
+                                        @csrf
+                                    </form>
+
+                                    <form id="users-form" action="{{ route('users') }}" method="GET" style="display: none;">
+                                        @csrf
+                                    </form>
+
+
                                 </div>
                             </li>
                         @endguest
                     </ul>
                 </div>
-            </div>
+            </div>  
         </nav>
 
         <main class="py-4">
