@@ -31,15 +31,15 @@ class User extends Authenticatable
     {
         switch ($this->type) {
             case 0:
-                return 'bank account';
+                return 'food';
             case 1:
-                return 'pocket money';
+                return 'clothes';
             case 2:
-                return 'PayPal account';
+                return 'services';
             case 3:
-                return 'credit card';
+                return 'electricity';
             case 4:
-                return 'meal card';
+                return 'phone';
             case 5:
                 return 'other';
 
