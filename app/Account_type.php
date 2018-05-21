@@ -15,29 +15,25 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'type'
+        'id', 'name',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    public function typeToStr()
+        public function typeToStr()
     {
-        switch ($this->type) {
+        switch ($this->name) {
             case 0:
-                return 'Administrator';
+                return 'Bank account';
             case 1:
-                return 'Publisher';
+                return 'Pocket money';
             case 2:
-                return 'Client';
+                return 'PayPal account';
+            case 2:
+                return 'Credit card';
+            case 2:
+                return 'Meal card';
         }
 
         return 'Unknown';
     }
+
 }

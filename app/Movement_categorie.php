@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'type'
+        'id', 'name', 'type'
     ];
 
     /**
@@ -31,11 +31,18 @@ class User extends Authenticatable
     {
         switch ($this->type) {
             case 0:
-                return 'Administrator';
+                return 'bank account';
             case 1:
-                return 'Publisher';
+                return 'pocket money';
             case 2:
-                return 'Client';
+                return 'PayPal account';
+            case 3:
+                return 'credit card';
+            case 4:
+                return 'meal card';
+            case 5:
+                return 'other';
+
         }
 
         return 'Unknown';
