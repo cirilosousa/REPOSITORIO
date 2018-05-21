@@ -9,12 +9,15 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
                     You are logged in!
+
+                    @yield('List Users')
+
                 </div>
             </div>
         </div>
