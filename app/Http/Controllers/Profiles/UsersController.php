@@ -20,25 +20,23 @@ class usersController extends Controller
 
             $admin = $request->has('admin');
             $blocked = $request->has('blocked');
-            
-            if (empty($request->input('name')))                
+                
+            if (empty($request->input('name'))){                
                 $users = DB::table('users')->where('admin', $admin)  
                                            ->where('blocked', $blocked)  
                                            ->get();
-
-            else
-                $user = $request->validate([
-                                'name' => 'regex:/^[\pL\s]+$/u',                                
-                                ], [ // Custom Messages
-                                'name.regex' => 'Only letters and spaces.',
-                                ]);
+            }
+            
+            else {
+                $request->validate(['name' => 'regex:/^[\pL\s]+$/u',],
+                                   ['name.regex' => 'Only letters and spaces.',]);
                 
-                $users = DB::table('users')->where ('name', 'like' , '%' . $user->name . '%')
+                $users = DB::table('users')->where ('name', 'like' , '%' . $request->input('name') . '%')
                                            ->where('admin', $admin)  
                                            ->where('blocked', $blocked)  
                                            ->get();
+            }
         }
-
         else{
             $users = DB::table('users')->get();
         }   
