@@ -15,7 +15,6 @@ class usersController extends Controller
     }
 
     public function index(Request $request) {
- 
         if ($request->has('name')){
 
             $admin = $request->has('admin');
@@ -27,7 +26,7 @@ class usersController extends Controller
                                            ->get();
 
             else
-                $users = DB::table('users')->where ('name', 'like' , $_GET['name']) 
+                $users = DB::table('users')->where ('name', 'like' , '%' . $request->input('name') . '%')
                                            ->where('admin', $admin)  
                                            ->where('blocked', $blocked)  
                                            ->get();
