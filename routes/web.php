@@ -11,41 +11,28 @@
 |
 */
 
-Auth::routes();
 
 Route::get('/', function () {
 	return view('welcome');
 });
 
-
-Route::get('/about', function() {
-	return view('about');
-})->name('about');
-//sem estar autenticado
-
-//após autenticar
-
-//Users
-Route::get('/users', 'Profiles\UsersController@index')->name('users');
-Route::patch('/users/{user}/block', 'Profiles\UsersController@block')->name('user.block');
-Route::patch('/users/{user}/unblock', 'Profiles\UsersController@unblock')->name('user.unblock');
-Route::patch('/users/{user}/promote', 'Profiles\UsersController@promote')->name('user.promote');
-Route::patch('/users/{user}/demote', 'Profiles\UsersController@demote')->name('user.demotes');
-Route::get('/profiles', 'Profiles\ProfilesController@index')->name('profiles');
-//Route::get('/me/associates', 'MeController@index')->name('me.associates');
-//Route::get('/me/associate-of', 'MeController@index')->name('me.associate-of');
-
-//Accounts
+Auth::routes();
+Route::get('/users', 'UsersController@index')->name('users');
+Route::patch('/users/{user}/block', 'UsersController@block')->name('user.block');
+Route::patch('/users/{user}/unblock', 'UsersController@unblock')->name('user.unblock');
+Route::patch('/users/{user}/promote', 'UsersController@promote')->name('user.promote');
+Route::patch('/users/{user}/demote', 'UsersController@demote')->name('user.demote');
+//Route::get('/me/profile', 'MyProfileController@index')->name('me.profile');
+Route::get('/profiles', 'ProfilesController@index')->name('profiles');
+//Route::get('/me/associates', 'AssociatesController@index')->name('me.associates');
+//Route::get('/me/associate-of', 'AssociateOfController@index')->name('me.associate-of');
 
 
-//Movements
-
-
-//Documents
-
-Route::get('/dashbord', 'DashboardController@index')->name('dashboard'); 
+Route::get('/dashbord', 'DashbordController@index')->name('dashbord'); 
 Route::get('/home', 'HomeController@index')->name('home');
-                
+
+//movements
+//oute::get('/movements/{account}', )
 
 
                  
