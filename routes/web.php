@@ -43,8 +43,8 @@ Route::get('/profiles', 'Profiles\ProfilesController@index')->name('profiles');
 
 //Documents
 
-Route::get('/dashbord', 'DashboardController@index')->name('dashboard'); 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); 
+
                 
 
 

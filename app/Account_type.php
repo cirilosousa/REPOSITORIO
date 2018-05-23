@@ -9,35 +9,19 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+
+     public function __construct() {
+        $this->middleware('auth'); //->except('index');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'type'
+        'id', 'name',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
 
-    public function typeToStr()
-    {
-        switch ($this->type) {
-            case 0:
-                return 'Administrator';
-            case 1:
-                return 'Publisher';
-            case 2:
-                return 'Client';
-        }
-
-        return 'Unknown';
-    }
 }
