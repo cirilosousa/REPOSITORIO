@@ -43,7 +43,13 @@ Route::get('/dashbord', 'DashbordController@index')->name('dashbord');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //movements
-//oute::get('/movements/{account}', )
+Route::get('/movements/{account}', 'AccountsController@index')->name('account');
+Route::get('movements/{account}/create', 'AccountsController@create')->name('account.create');
+Route::post('movements/{account}/create', 'AccountsController@store')->name('account.store');
+Route::get('movement/{movements}/create', 'MovementesController@create')->name('movements.create');
+Route::put('movement/{movements}/edit', 'MovementesController@update')->name('movements.edit');
+Route::delete('movement/{movements}', 'MovementesController@destroy')->name('movements.destroy');
+
 
 
 
