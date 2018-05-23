@@ -2,24 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
 use App\User;
-use Hash;
 use Illuminate\Http\Request;
+use Hash;
 use DB;
 
-class UsersController extends Controller
+class usersController extends Controller
 {
 
     public function __construct() {
         $this->middleware('auth'); //->except('index');
     }
 
-    public function index() {
+    public function index(Request $request) {
+ 
+        if ($request->has('name')){
+
+            $admin = $request->has('admin');
+            $blocked = $request->has('blocked');
+            
+            if (empty($request->input('name')))                
+                $users = DB::table('users')->where('admin', $admin)  
+                                           ->where('blocked', $blocked)  
+                                           ->get();
+
+            else
+                $users = DB::table('users')->where ('name', 'like' , $_GET['name']) 
+                                           ->where('admin', $admin)  
+                                           ->where('blocked', $blocked)  
+                                           ->get();
+        }
+
+        else{
+            $users = DB::table('users')->get();
+        }   
         
-        $users = DB::table('users')->get();
-        return view('profiles.admin_index', compact('users'));
+        return view('profiles.users', compact('users'));
     }
 
     public function block($id) {

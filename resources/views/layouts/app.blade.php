@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Projeto.AInet') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -56,22 +56,24 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('profiles') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('profile-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('profiles') }}">
                                         {{ __('My Profile') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('profiles') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('profiles-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('profiles') }}">
                                         {{ __('User Profiles') }}
                                     </a>
 
+                                    <a class="dropdown-item" href="{{ route('profiles') }}">
+                                        {{ __('Associates') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('profiles') }}">
+                                        {{ __('Associated of') }}
+                                    </a>
+
                                     @if (Auth::user()->admin)
-                                    <a class="dropdown-item" href="{{ route('users') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('users-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('users') }}">
                                         {{ __('Administrate Users') }}
                                     </a>
                                     @endif
@@ -80,20 +82,6 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                            
-                                    <!-- ALTERAR ESTE -->
-                                    <form id="profile-form" action="{{ route('profiles') }}" method="GET" style="display: none;">
-                                        @csrf
-                                    </form>
-
-                                    <form id="profiles-form" action="{{ route('profiles') }}" method="GET" style="display: none;">
-                                        @csrf
-                                    </form>
-
-                                    <form id="users-form" action="{{ route('users') }}" method="GET" style="display: none;">
-                                        @csrf
-                                    </form>
-
 
                                 </div>
                             </li>
