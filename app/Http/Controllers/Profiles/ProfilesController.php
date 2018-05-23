@@ -15,8 +15,21 @@ class ProfilesController extends Controller
         $this->middleware('auth'); //->except('index');
     }
 
-    public function index() {
-    	$users = DB::table('users')->get();
+    public function index(Request $request) {
+
+        if ($request->has('name') && !empty($request->input('name'))){
+            
+            $request->validate(['name' => 'regex:/^[\pL\s]+$/u',],
+            				   ['name.regex' => 'Only letters and spaces.',]);
+            
+            $users = DB::table('users')->where ('name', 'like' , '%' . $request->input('name') . '%')
+                                       ->get();
+        }
+        
+        else{
+            $users = DB::table('users')->get();
+        }  
+
 		return view('profiles.profiles', compact('users'));
     }
     

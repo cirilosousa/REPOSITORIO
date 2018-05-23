@@ -69,7 +69,9 @@
 		</table>
 
 	@else
-		<h2>No users found</h2>
+		<div class="row justify-content-center">
+			<h1>No users found</h1>
+		</div>
 	@endif
 
 @endsection
