@@ -70,4 +70,8 @@ class usersController extends Controller
         
         return redirect()->route('users');
     }
+
+    //envio email no update de user
+    //Mail::to($request->email)
+    //->send (new UpdatedUser($user));
 }
