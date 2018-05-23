@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Profiles;
 
+use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Hash;
@@ -26,7 +27,13 @@ class usersController extends Controller
                                            ->get();
 
             else
-                $users = DB::table('users')->where ('name', 'like' , '%' . $request->input('name') . '%')
+                $user = $request->validate([
+                                'name' => 'regex:/^[\pL\s]+$/u',                                
+                                ], [ // Custom Messages
+                                'name.regex' => 'Only letters and spaces.',
+                                ]);
+                
+                $users = DB::table('users')->where ('name', 'like' , '%' . $user->name . '%')
                                            ->where('admin', $admin)  
                                            ->where('blocked', $blocked)  
                                            ->get();
