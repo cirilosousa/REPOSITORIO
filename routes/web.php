@@ -16,6 +16,11 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
+Route::get('/about', function () {
+	return view('about');
+})->name('about');
+
+
 Auth::routes();
 Route::get('/users', 'Profiles\UsersController@index')->name('users');
 Route::patch('/users/{user}/block', 'Profiles\UsersController@block')->name('user.block');
@@ -28,19 +33,8 @@ Route::get('/profiles', 'Profiles\ProfilesController@index')->name('profiles');
 //Route::get('/me/associate-of', 'AssociateOfController@index')->name('me.associate-of');
 
 
-
-
-//Movements
-
-
-//Documents
-
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); 
 
-                
-
-Route::get('/dashbord', 'DashbordController@index')->name('dashbord'); 
-Route::get('/home', 'HomeController@index')->name('home');
 
 //movements
 Route::get('/movements/{account}', 'AccountsController@index')->name('account');
@@ -50,6 +44,8 @@ Route::get('movement/{movements}/create', 'MovementesController@create')->name('
 Route::put('movement/{movements}/edit', 'MovementesController@update')->name('movements.edit');
 Route::delete('movement/{movements}', 'MovementesController@destroy')->name('movements.destroy');
 
+
+//Documents
 
 
 
