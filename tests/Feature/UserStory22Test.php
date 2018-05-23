@@ -138,7 +138,7 @@ abstract class UserStory22Test extends BaseAccountsTest
             ->orderBy('date')
             ->orderBy('created_at')
             ->get();
-        dd($transactions);
+        // dd($transactions);
     }
 
     protected function startQueryLogging()
