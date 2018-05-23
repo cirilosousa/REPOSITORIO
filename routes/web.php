@@ -15,23 +15,41 @@
 Route::get('/', function () {
 	return view('welcome');
 });
-
+//register
+Route::get('/register', 'RegistersController@index');
+Route::post('/register', 'RegistersController@index');
+Route::post('/login', function() {
+	return view('login');
+});
+//sem estar autenticado
 Auth::routes();
+//após autenticar
+
+//Users
 Route::get('/users', 'UsersController@index')->name('users');
 Route::patch('/users/{user}/block', 'UsersController@block')->name('user.block');
 Route::patch('/users/{user}/unblock', 'UsersController@unblock')->name('user.unblock');
 Route::patch('/users/{user}/promote', 'UsersController@promote')->name('user.promote');
 Route::patch('/users/{user}/demote', 'UsersController@demote')->name('user.demote');
-//Route::get('/me/profile', 'MyProfileController@index')->name('me.profile');
+
+//Me
+//Route::patch('/me/password', 'MeController@password')->name('me.profile');
+//Route::put('/me/profile', 'MeController@index');
 Route::get('/profiles', 'ProfilesController@index')->name('profiles');
-//Route::get('/me/associates', 'AssociatesController@index')->name('me.associates');
-//Route::get('/me/associate-of', 'AssociateOfController@index')->name('me.associate-of');
+//Route::get('/me/associates', 'MeController@index')->name('me.associates');
+//Route::get('/me/associate-of', 'MeController@index')->name('me.associate-of');
+
+//Accounts
 
 
-Route::get('/dashbord', 'DashbordController@index')->name('dashbord'); 
+//Movements
+
+
+//Documents
+
+Route::get('/dashbord', 'DashboardController@index')->name('dashboard'); 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
+                
 
 
                  
