@@ -17,13 +17,13 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/users', 'UsersController@index')->name('users');
-Route::patch('/users/{user}/block', 'UsersController@block')->name('user.block');
-Route::patch('/users/{user}/unblock', 'UsersController@unblock')->name('user.unblock');
-Route::patch('/users/{user}/promote', 'UsersController@promote')->name('user.promote');
-Route::patch('/users/{user}/demote', 'UsersController@demote')->name('user.demote');
+Route::get('/users', 'Profiles\UsersController@index')->name('users');
+Route::patch('/users/{user}/block', 'Profiles\UsersController@block')->name('user.block');
+Route::patch('/users/{user}/unblock', 'Profiles\UsersController@unblock')->name('user.unblock');
+Route::patch('/users/{user}/promote', 'Profiles\UsersController@promote')->name('user.promote');
+Route::patch('/users/{user}/demote', 'Profiles\UsersController@demote')->name('user.demote');
 //Route::get('/me/profile', 'MyProfileController@index')->name('me.profile');
-Route::get('/profiles', 'ProfilesController@index')->name('profiles');
+Route::get('/profiles', 'Profiles\ProfilesController@index')->name('profiles');
 //Route::get('/me/associates', 'AssociatesController@index')->name('me.associates');
 //Route::get('/me/associate-of', 'AssociateOfController@index')->name('me.associate-of');
 
