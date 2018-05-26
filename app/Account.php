@@ -1,43 +1,32 @@
-<?php
+ <?php
 
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+
+class Account extends Model
 {
-    use Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+ 
     protected $fillable = [
-        'name', 'email', 'password', 'type'
+        'category', 'date', 'value', 'type', 'end_balance',
     ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    public function typeToStr()
+  
+  public function type()
     {
         switch ($this->type) {
             case 0:
-                return 'Administrator';
+                return 'Bank Account';
             case 1:
-                return 'Publisher';
+                return 'Pocket Money';
             case 2:
-                return 'Client';
+                return 'PayPal Account';
+            case 3:
+                return 'Credit Card';
+            case 4:
+                return 'Meal Card';
+            case 5:
+                return 'Other';
         }
-
-        return 'Unknown';
     }
 }
