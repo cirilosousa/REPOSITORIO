@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Hash;
 use DB;
+use Mail;
 
 class usersController extends Controller
 {

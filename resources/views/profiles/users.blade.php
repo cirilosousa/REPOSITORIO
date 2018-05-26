@@ -5,6 +5,7 @@
 @section('content')
 	@if (Auth::user()->admin)
 		@if(count($users))
+		
 			<div class="container">
 			    <div class="row justify-content-center">
 			        <div class="col-md-10">

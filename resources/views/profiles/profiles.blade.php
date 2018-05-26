@@ -3,7 +3,6 @@
 @section('title', 'User list')
 
 @section('content')
-
 	@if(count($users))
 
 		<div class="container">
@@ -58,10 +57,26 @@
 			     		<td>{{$user->name}}</td>	
 			     		<td>
 
+			     		@php
+							$test=App\Models\Associate_member::where('main_user_id','=',Auth::user()->id)  
+			     							 			 	 ->where('associated_user_id','=',$user->id)
+			     				   					      	 ->get();
+			     		@endphp
 
-			     			
+			    		@if (count($test)) 
 			               	<a class="btn btn-xs btn-primary" href="">Associated</a>
+			            @endif
+						
+						@php
+							$test=App\Models\Associate_member::where('main_user_id','=',$user->id)  
+			     							 			 	 ->where('associated_user_id','=',Auth::user()->id)
+			     				   					      	 ->get();
+			     		@endphp
+						
+			    		@if (count($test)) 
 			                <a class="btn btn-xs btn-primary" href="">Associate-of</a>
+			            @endif
+
 			            </td>
 					</tr>
 			    @endforeach
