@@ -3,13 +3,14 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
 
 class Account extends Model
 {
  
     protected $fillable = [
-        'category', 'date', 'value', 'type', 'end_balance',
+        'category', 'value', 'type',
     ];
   
   public function type()
