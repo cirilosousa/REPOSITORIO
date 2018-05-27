@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'List Users')
+@section('title', 'List Accounts')
 
 @section('content')
 <div><a class="btn btn-primary" href="{{ route('users.create') }}">Add user</a></div>

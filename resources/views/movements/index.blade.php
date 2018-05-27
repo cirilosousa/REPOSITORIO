@@ -1,32 +1,33 @@
 @extends('layouts.app')
 
-@section('title', 'List Users')
+@section('title', 'List Movement')
 
 @section('content')
-<div><a class="btn btn-primary" href="{{ route('users.create') }}">Add user</a></div>
+<div><a class="btn btn-primary" href="{{ route('movements.create') }}">Add Movement</a></div>
 
-@if(count($users))
+@if(count($movement))
     <table class="table table-striped">
     <thead>
         <tr>
-            <th>Email</th>
-            <th>Fullname</th>
-            <th>Registered At</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Description</th>
             <th>Type</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-    @foreach ($users as $user)
+    @foreach ($movement as $movement)
         <tr>
-            <td>{{ $user->email }}</td>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->created_at }}</td>
-            <td>{{ $user->typeToStr() }}</td>
+            <td>{{ $movement->movement_category_id}}</td>
+            <td>{{ $movement->date }}</td>
+            <td>{{ $movement->description}}</td>
+            <td>{{ $movement->type() }}</td>
+            <td>{{ $movement->created_at}}</td>
             <td>
-                <a class="btn btn-xs btn-primary" href="{{ route('users.edit', $user->id) }}">Edit</a>
-                <form action="{{ route('users.destroy', $user->id) }}" method="POST" role="form" class="inline">
-                    <input type="hidden" name="user_id" value="{{ $user->id }}">
+                <a class="btn btn-xs btn-primary" href="{{ route('movement.edit', $movement->id) }}">Edit</a>
+                <form action="{{ route('movement.destroy', $movement->id) }}" method="POST" role="form" class="inline">
+                    <input type="hidden" name="movement_id" value="{{ $movement->id }}">
                     <button type="submit" class="btn btn-xs btn-danger">Delete</button>
                 </form>
             </td>
@@ -34,7 +35,7 @@
     @endforeach
     </table>
 @else
-    <h2>No users found</h2>
+    <h2>No movement found</h2>
 @endif
 
 @endsection

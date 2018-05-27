@@ -6,11 +6,17 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
 
+
 class Account extends Model
 {
  
     protected $fillable = [
-        'category', 'value', 'type',
+        'owner_id'~,
+        'account_type_id',
+            'date',
+            'created_at',
+            'code',
+            'description',
     ];
   
   public function type()

@@ -9,7 +9,7 @@
 @endif
 
 <form action="{{ route('users.store') }}" method="post" class="form-group">
-    @include('users.partials.add-edit')
+    @include('movements.partials.add-edit')
 
     <div class="form-group">
         <label for="inputPassword">Password</label>

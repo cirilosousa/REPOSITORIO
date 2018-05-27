@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create User')
+@section('title', 'Create Account')
 
 @section('content')
 
@@ -8,15 +8,12 @@
     @include('shared.errors')
 @endif
 
-<form action="{{ route('users.store') }}" method="post" class="form-group">
+<form action="{{ route('account.store') }}" method="post" class="form-group">
     @include('users.partials.add-edit')
 
     <div class="form-group">
-        <label for="inputPassword">Password</label>
-        <input
-            type="password" class="form-control"
-            name="password" id="inputPassword"
-            value="{{ old('password') }}"/>
+        <label for="inputPassword">Name</label>
+        
     </div>
     <div class="form-group">
         <label for="inputPasswordConfirmation">Password confirmation</label>
