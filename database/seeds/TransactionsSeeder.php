@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Database\TypesSeeder;
 use Carbon\Carbon;
 
 class TransactionsSeeder extends Seeder
