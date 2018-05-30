@@ -2,52 +2,29 @@
 
 namespace App;
 
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
 class Movement extends Model
 {
-   
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'id',
-        'account_id', 
-        'movement_category_id', 
-        'date', 
-        'value', 
-        'start_balance', 
+	protected $fillable = [
+		'account_id',
+        'movement_category_id',
+        'date',
+        'value',
+        'start_balance',
         'end_balance',
         'description',
         'type',
-        'document_id',
+        'created_at';
+    ]
+
+    protected $hidden = [
+        'start_balance',
+        'end_balance',  
+        'created_at',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'created_at',  
-    ];     
-
-
-    public function document()
-    {
-        return $this->belongsTo('App\Document');
-    }
-
-    public function movement_categorie()
-    {
-        return $this->belongsTo('App\Movement_categorie');
-    }
-
-    public function account()
-    {
-        return $this->belongsTo('App\Account', 'account_id');
-    }
 
 }
