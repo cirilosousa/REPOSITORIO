@@ -29,7 +29,7 @@ class Account extends Model
   
   public function type()
     {
-        switch ($this->type) {
+        switch ($this->account_type_id) {
             case 0:
                 return 'Bank Account';
             case 1:

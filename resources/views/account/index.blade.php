@@ -8,10 +8,8 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>Account Code</th>
                     <th>Account type</th>
-                    <th>Code</th>
-                    <th>Description</th>
-                    <th>Start balance</th>
                     <th>Current balance</th>
                 </tr>
             </thead>
@@ -19,10 +17,8 @@
             <tbody>
                 @foreach ($accounts as $account)
                     <tr>
-                        <td>{{ $account->account_type_id }}</td>
                         <td>{{ $account->code }}</td>
-                        <td>{{ $account->description }}</td>
-                        <td>{{ $account->start_balance }}</td>
+                        <td>{{ $account->type() }}</td>
                         <td>{{ $account->current_balance }}</td>
                         <td>
                     </tr>

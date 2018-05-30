@@ -38,16 +38,19 @@ class AccountsController extends Controller
     	return view('account.index', compact('accounts'));
     }
 
-    public function destroy(){
-     
+    public function destroy($id){
+    	$account = Account::find($id);
+    	$account->forceDelete();
     }
 
-    public function close(){
-     
+    public function close($id){
+		$account = Account::find($id);
+    	$account->delete();	     
     }
 
-    public function reopen(){
-     
+    public function reopen($id){
+    	$account = Account::find($id);
+    	$account->restore();	      
     }
 
     public function create(){
@@ -57,5 +60,4 @@ class AccountsController extends Controller
     public function edit(){
      
     }
-
 }
