@@ -13,8 +13,9 @@
 
 
 Route::get('/', function () {
+    
 	return view('welcome');
-});
+})->name('users');
 
 Route::get('/about', function () {
 	return view('about');

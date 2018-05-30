@@ -76,6 +76,7 @@
                 <div class="title m-b-md">
                     WELCOME PAGE
                     <p>Statistics</p>
+                    
 
                 </div>
 
