@@ -1,23 +1,27 @@
- <?php
+<?php
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
-
-
 class Account extends Model
-{
- 
+{ 
     protected $fillable = [
-        'owner_id'~,
+        'id', 
+        'owner_id', 
         'account_type_id',
-            'date',
-            'created_at',
-            'code',
-            'description',
+        'date',
+        'code',
+        'description',
+        'start_balance',
+        'current_balance',
+        'last_movement_date',
     ];
+    
+    protected $hidden = [
+        'deleted_at',
+        'created_at'    
+    ];    
   
   public function type()
     {
@@ -36,4 +40,21 @@ class Account extends Model
                 return 'Other';
         }
     }
+
+    public function movements()
+    {
+        return $this->hasMany('App\Movement');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'id');
+    }
+
+    public function account_type()
+    {
+        return $this->belongsTo('App\Account_type', 'id');
+    }
+
+
 }

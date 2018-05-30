@@ -27,22 +27,26 @@ Route::patch('/users/{user}/block', 'Profiles\UsersController@block')->name('use
 Route::patch('/users/{user}/unblock', 'Profiles\UsersController@unblock')->name('user.unblock');
 Route::patch('/users/{user}/promote', 'Profiles\UsersController@promote')->name('user.promote');
 Route::patch('/users/{user}/demote', 'Profiles\UsersController@demote')->name('user.demote');
-//Route::get('/me/profile', 'MyProfileController@index')->name('me.profile');
+Route::patch('/me/password', 'Profiles\ProfileController@update_password')->name('update.password');
+Route::get('/me/profile', 'Profiles\ProfileController@index')->name('me.profile');
+Route::put('/me/profile', 'Profiles\ProfileController@update_profile')->name('update.profile');
 Route::get('/profiles', 'Profiles\ProfilesController@index')->name('profiles');
-//Route::get('/me/associates', 'AssociatesController@index')->name('me.associates');
-//Route::get('/me/associate-of', 'AssociateOfController@index')->name('me.associate-of');
+Route::get('/me/associates', 'Profiles\AssociatesController@index')->name('me.associates');
+Route::get('/me/associate-of', 'Profiles\AssociateOfController@index')->name('me.associate_of');
 
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); 
 
+Route::get('/accounts/{user}', 'AccountsController@index')->name('accounts');
 
 //movements
-Route::get('/movements/{account}', 'AccountsController@index')->name('account');
-Route::get('movements/{account}/create', 'AccountsController@create')->name('account.create');
-Route::post('movements/{account}/create', 'AccountsController@store')->name('account.store');
-Route::get('movement/{movements}/create', 'MovementesController@create')->name('movements.create');
-Route::put('movement/{movements}/edit', 'MovementesController@update')->name('movements.edit');
-Route::delete('movement/{movements}', 'MovementesController@destroy')->name('movements.destroy');
+Route::get('/movements/{account}', 'MovementsController@index')->name('movements');
+Route::get('movements/{account}/create', 'MovementsController@create')->name('movements.create');
+Route::post('movements/{account}/create', 'MovementsController@store')->name('movements.store');
+Route::get('movement/{movement}', 'MovementsController@edit')->name('movements.edit');
+Route::put('movement/{movement}', 'MovementsController@update')->name('movements.update');
+Route::delete('movement/{movement}', 'MovementsController@destroy')->name('movements.destroy');
+
 
 
 //Documents

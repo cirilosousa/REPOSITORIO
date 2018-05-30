@@ -21,9 +21,8 @@ class User extends Authenticatable
         'password', 
         'admin', 
         'blocked', 
-        'phone', 
+        'phone',
         'profile_photo',
-        'profile_settings',
     ];
 
     /**
@@ -32,6 +31,27 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',  
+        'password',
+        'profile_settings',
+        'remember_token',  
+        'created_at',
+        'updated_at',
     ];
+
+
+    public function accounts()
+    {
+        return $this->hasMany('App\Account', 'owner_id');
+    }
+
+    public function associates()
+    {
+        return $this->belongsToMany('App\User', 'associate_members', 'main_user_id', 'associated_user_id');
+    }
+
+    public function associate_of()
+    {
+        return $this->belongsToMany('App\User', 'associate_members', 'associated_user_id', 'main_user_id');
+    }
+
 }

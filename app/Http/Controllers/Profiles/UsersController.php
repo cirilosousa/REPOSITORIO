@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Profiles;
 
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Http\Request;
-use Hash;
-use DB;
-use Mail;
+use App\User;
 
-class usersController extends Controller
+class UsersController extends Controller
 {
 
     public function __construct() {
@@ -23,56 +20,52 @@ class usersController extends Controller
             $blocked = $request->has('blocked');
                 
             if (empty($request->input('name'))){                
-                $users = DB::table('users')->where('admin', $admin)  
-                                           ->where('blocked', $blocked)  
-                                           ->get();
+                $users = User::where('admin', $admin)  
+                             ->where('blocked', $blocked)  
+                             ->get();
             }
             
             else {
                 $request->validate(['name' => 'regex:/^[\pL\s]+$/u',],
                                    ['name.regex' => 'Only letters and spaces.',]);
                 
-                $users = DB::table('users')->where ('name', 'like' , '%' . $request->input('name') . '%')
-                                           ->where('admin', $admin)  
-                                           ->where('blocked', $blocked)  
-                                           ->get();
+                $users = User::where ('name', 'like' , '%' . $request->input('name') . '%')
+                             ->where('admin', $admin)  
+                             ->where('blocked', $blocked)  
+                             ->get();
             }
         }
         else{
-            $users = DB::table('users')->get();
+            $users = User::all();
         }   
         
         return view('profiles.users', compact('users'));
     }
 
     public function block($id) {
-        DB::table('users')
-            ->where('id', $id)
+        User::where('id', $id)
             ->update(['blocked' => 1]);
         
         return redirect()->route('users');        
     }
 
     public function unblock($id) {
-        DB::table('users')
-            ->where('id', $id)
+        User::where('id', $id)
             ->update(['blocked' => 0]);
         
         return redirect()->route('users');
     }
 
     public function promote($id) {
-        DB::table('users')
-            ->where('id', $id)
+        User::where('id', $id)
             ->update(['admin' => 1]);
         
         return redirect()->route('users');
     }
 
     public function demote($id) {
-          DB::table('users')
-            ->where('id', $id)
-            ->update(['admin' => 0]);
+          USer::where('id', $id)
+              ->update(['admin' => 0]);
         
         return redirect()->route('users');
     }

@@ -58,9 +58,9 @@
 			     		<td>
 
 			     		@php
-							$test=App\Models\Associate_member::where('main_user_id','=',Auth::user()->id)  
-			     							 			 	 ->where('associated_user_id','=',$user->id)
-			     				   					      	 ->get();
+							$test=App\Associate_member::where('main_user_id','=',Auth::user()->id)
+													  ->where('associated_user_id','=',$user->id)
+													  ->get();
 			     		@endphp
 
 			    		@if (count($test)) 
@@ -68,9 +68,9 @@
 			            @endif
 						
 						@php
-							$test=App\Models\Associate_member::where('main_user_id','=',$user->id)  
-			     							 			 	 ->where('associated_user_id','=',Auth::user()->id)
-			     				   					      	 ->get();
+							$test=App\Associate_member::where('main_user_id','=',$user->id) 
+			     				 	 			 	  ->where('associated_user_id','=',Auth::user()->id)
+													  ->get();
 			     		@endphp
 						
 			    		@if (count($test)) 

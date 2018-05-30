@@ -2,11 +2,17 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
 class Associate_member extends Model
-{
-   
+{ 
+    protected $fillable = [
+        'main_user_id', 
+        'associated_user_id', 
+    ];
+    
+    protected $hidden = [
+        'created_at'    
+    ];    
+  
 }

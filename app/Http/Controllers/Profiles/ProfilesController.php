@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Profiles;
 
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Http\Request;
-use Hash;
-use DB;
+use App\User;
 
 class ProfilesController extends Controller
 {
@@ -22,12 +20,11 @@ class ProfilesController extends Controller
             $request->validate(['name' => 'regex:/^[\pL\s]+$/u',],
             				   ['name.regex' => 'Only letters and spaces.',]);
             
-            $users = DB::table('users')->where ('name', 'like' , '%' . $request->input('name') . '%')
-                                       ->get();
+            $users = User::where ('name', 'like' , '%' . $request->input('name') . '%')->get();
         }
         
         else{
-            $users = DB::table('users')->get();
+            $users = User::all();
         }  
 
 		return view('profiles.profiles', compact('users'));

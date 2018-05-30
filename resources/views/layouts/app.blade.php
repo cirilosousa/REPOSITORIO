@@ -56,7 +56,7 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('profiles') }}">
+                                    <a class="dropdown-item" href="{{ route('me.profile') }}">
                                         {{ __('My Profile') }}
                                     </a>
 
@@ -64,11 +64,11 @@
                                         {{ __('User Profiles') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('profiles') }}">
+                                    <a class="dropdown-item" href="{{ route('me.associates') }}">
                                         {{ __('Associates') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('profiles') }}">
+                                    <a class="dropdown-item" href="{{ route('me.associate_of') }}">
                                         {{ __('Associated of') }}
                                     </a>
 
