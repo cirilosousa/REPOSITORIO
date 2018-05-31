@@ -17,17 +17,18 @@ class AccountsController extends Controller
         $this->middleware('auth'); //->except('index');
     }
 
+
     public function fullindex($id){
    		$accounts = Account::withTrashed()
-   						   ->where('owner_id', $id)
-   						   ->get();        
+ 						   ->where('owner_id', $id)
+ 						   ->get();        
     	return view('account.index', compact('accounts'));
     }
 
 
     public function openedindex($id){
         $accounts = Account::where('owner_id', $id)
-   						   ->get();
+   						     ->get();
     	return view('account.index', compact('accounts'));
     }
 
