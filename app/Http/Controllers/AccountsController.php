@@ -19,24 +19,24 @@ class AccountsController extends Controller
 
 
     public function fullindex($id){
-   		$accounts = Account::withTrashed()
- 						   ->where('owner_id', $id)
- 						   ->get();        
-    	return view('account.index', compact('accounts'));
+      $accounts = Account::withTrashed()
+ 						    ->where('owner_id', $id)
+ 						    ->get();        
+    	return view('account.index', compact('accounts'), compact('id'));
     }
 
 
     public function openedindex($id){
-        $accounts = Account::where('owner_id', $id)
-   						     ->get();
-    	return view('account.index', compact('accounts'));
+      $accounts = Account::where('owner_id', $id)
+   						    ->get();
+    	return view('account.index', compact('accounts'), compact('id'));
     }
 
     public function closedindex($id){
    		$accounts = Account::onlyTrashed()
-   						   ->where('owner_id', $id)
-   						   ->get();   
-    	return view('account.index', compact('accounts'));
+   						  ->where('owner_id', $id)
+   					    ->get();   
+    	return view('account.index', compact('accounts'), compact('id'));
     }
 
     public function destroy($id){
@@ -45,9 +45,11 @@ class AccountsController extends Controller
     }
 
     public function close($id){
-		$account = Account::find($id);
-    	$account->delete();	     
+		  $account = Account::find($id);
+      $account->delete(); 
+      //return redirect()->route('/accounts/'.$id);
     }
+
 
     public function reopen($id){
     	$account = Account::find($id);

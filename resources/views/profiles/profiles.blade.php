@@ -64,7 +64,7 @@
 			     		@endphp
 
 			    		@if (count($test)) 
-			               	<a class="btn btn-xs btn-primary" href="">Associated</a>
+			               	<a class="btn btn-xs btn-primary disabled" href="">Associated</a>
 			            @endif
 						
 						@php
@@ -74,7 +74,7 @@
 			     		@endphp
 						
 			    		@if (count($test)) 
-			                <a class="btn btn-xs btn-primary" href="">Associate-of</a>
+			                <a class="btn btn-xs btn-primary disabled" href="">Associate-of</a>
 			            @endif
 
 			            </td>
