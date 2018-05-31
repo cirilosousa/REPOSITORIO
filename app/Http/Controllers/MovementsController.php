@@ -66,7 +66,7 @@ class MovementsController extends Controller
     	return $movement;
     }
 
-    public function store(){
+    public function store(StoreMovementRequest $request){
     	$this->authorize('create', Movement::class);
 
     	$movement = new movement();
@@ -92,8 +92,8 @@ class MovementsController extends Controller
         $this->validate($request, [
             
         ]);
-        $movement->fill($request->except('password'));
-        $user->save();
+        $movement->fill($request);
+        $movement->save();
 
         return redirect()
             ->route('movements')
@@ -103,8 +103,14 @@ class MovementsController extends Controller
 
     }
 
-    public function destroy(){
-
+    public function destroy(Movement $movement){
+$this->authorize('delete', $movement);
+ 
+        $user->delete();
+        return redirect()
+            ->route('movements')
+            ->with('success', 'Movement deleted successfully!');
+    }
 
 
     }
