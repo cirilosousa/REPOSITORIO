@@ -16,8 +16,11 @@
 
     <a class="btn btn-xs btn-primary active emlinha" href="/accounts/{{$id}}">All accounts</a>   
     <a class="btn btn-xs btn-primary active emlinha" href="/accounts/{{$id}}/opened">Opened Accounts</a>   
-    <a class="btn btn-xs btn-primary active emlinha" href="/accounts/{{$id}}/closed">Closed Accounts</a>   
-    <a class="btn btn-xs btn-success active emlinha" href="/accounts/{{$id}}/create">Create Account</a>  
+    <a class="btn btn-xs btn-primary active emlinha" href="/accounts/{{$id}}/closed">Closed Accounts</a>
+
+    @if ($id==Auth::user()->id)
+    <a class="btn btn-xs btn-success active emlinha" href="/account/create">Create Account</a>  
+    @endif
 
     @if(count($accounts))
 

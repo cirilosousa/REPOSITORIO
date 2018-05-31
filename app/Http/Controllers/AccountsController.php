@@ -13,6 +13,7 @@ use Auth;
 class AccountsController extends Controller
 {
 
+
 	public function __construct() {
         $this->middleware('auth'); //->except('index');
     }
@@ -50,13 +51,17 @@ class AccountsController extends Controller
       //return redirect()->route('/accounts/'.$id);
     }
 
-
     public function reopen($id){
     	$account = Account::find($id);
     	$account->restore();	      
     }
 
-    public function create(){
+    public function create(Request $request){
+        $user = Auth::User()->id;
+        return view('account.add', compact('user'));
+    }
+
+    public function store(){
      
     }
 
