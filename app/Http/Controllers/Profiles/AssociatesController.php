@@ -21,4 +21,5 @@ class AssociatesController extends Controller
 
         return view('profiles.associates', compact('associates'));
     }
+    
 }

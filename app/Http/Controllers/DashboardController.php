@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\User;
 use App\Account;
+use Auth;
 
 class DashboardController extends Controller
 {
@@ -26,8 +28,39 @@ class DashboardController extends Controller
     public function index()
     {
 
+        //Auth::user()->id
+        $lista = User::find(11)->accounts;
 
-        $totalMontante = User::Account;
-        return view('dashboard');
+        //1º elemento da lista a null
+        if ($lista->first() === null) {
+
+            return view('dashboard');
+
+        }else{
+            //define var
+            $saldo = 0;
+
+            //somatorio do saldo
+            foreach ($lista as $conta) {
+
+                $saldo += $conta->current_balance;
+            }
+        }
+
+
+
+
+        
+
+
+
+
+
+
+
+        return view('dashboard', compact('saldo', 'lista'));
+        
+
+
     }
 }

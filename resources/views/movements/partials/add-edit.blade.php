@@ -1,3 +1,4 @@
+{{ csrf_field() }}
 @extends('layouts.app')
 
 @section('title', 'Create User')
@@ -8,10 +9,8 @@
     @include('shared.errors')
 @endif
 
-<form action="{{ route('movements.store') }}" method="post" class="form-group">
-    @include('movements.partials.add-edit')
-
-    <div class="form-group">
+<form action="{{route('movements.edit') }}" method="post" class="form-group">
+ <div class="form-group">
         <select name="Category" multiple>
             <option value="Expenses">Expenses</option>
             <option value="Revenue">Revenue</option>
@@ -41,15 +40,7 @@
         </select>
     </div>
     <div class="form-group row">
-                            <label for="value" class="col-md-4 col-form-label text-md-right">{{ __('Value') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="value" type="numeric" class="form-control{{ $errors->has('value') ? ' is-invalid' : '' }}" name="name" value="{{ old('value') }}" required autofocus>
-                            </div>
-                        </div>
-
-    <div class="form-group row">
-     <label for="document" class="col-md-4 col-form-label text-md-right">{{ __('document') }}</label>
+                            <label for="document" class="col-md-4 col-form-label text-md-right">{{ __('document') }}</label>
                             
                             <div class="col-md-6">
                                 <input id="document" type="file" class="form-control{{ $errors->has('document') ? ' is-invalid' : '' }}" name="document" value="{{ old('document') }}">
@@ -63,10 +54,6 @@
                         </div>
     <div>
         <textarea name="textarea_field" rows="3" cols="30">Description</textarea>
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-success" name="ok">Add</button>
-        <a class="btn btn-default" href="{{ route('movements') }}">Cancel</a>
     </div>
 </form>
 @endsection
