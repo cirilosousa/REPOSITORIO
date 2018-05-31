@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Exceptions;
 use App\Http\Controllers\Controller;
 use App\Database\seeds\TypesSeeder;
 use App\User;
@@ -34,7 +35,7 @@ class MovementsController extends Controller
     }
 
     public function create(array $data){
-    	$movement = Movement::create([
+    	$movements = Movement::create([
             'date' => $data['date'],
             'movement_category_id' => $data['movement_category_id'],
             'type' => $data['type'],
@@ -47,7 +48,7 @@ class MovementsController extends Controller
 
          if ($file->isValid()) {
             $path= $file->store('documents');
-            $movement->update(['document_id' => basename($path) ]);
+            $movements->update(['document_id' => basename($path) ]);
             Storage::setVisibility($path, 'documents');
         }     
 
@@ -57,9 +58,9 @@ class MovementsController extends Controller
     public function store(StoreMovementRequest $request){
     	$this->authorize('create', Movement::class);
 
-    	$movement = new movement();
-    	$movement->fill($request->all());
-    	$movement->save();
+    	$movements = new movement();
+    	$movements->fill($request->all());
+    	$movements->save();
 
     	return redirect()
     	->route('movements')
