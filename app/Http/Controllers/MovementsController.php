@@ -33,7 +33,6 @@ class MovementsController extends Controller
         ]);
     }
 
-
     public function create(array $data){
     	$movement = Movement::create([
             'date' => $data['date'],
@@ -50,18 +49,7 @@ class MovementsController extends Controller
             $path= $file->store('documents');
             $movement->update(['document_id' => basename($path) ]);
             Storage::setVisibility($path, 'documents');
-        }
-
-
-        'account_id', 
-         
-         
-         
-        'start_balance', 
-        'end_balance',
-        
-        
-    ];
+        }     
 
     	return $movement;
     }
@@ -79,14 +67,14 @@ class MovementsController extends Controller
     }
 
 
-    public function edit(Movement $movement){
-    	$this->authorize('update', $movement);
-        return view('movements.edit', compact('movement'));
+    public function edit($account_id, $movement_id){
+    	$this->authorize('update', $movement_id);
+        return view('movements.edit', compact('movements'));
 
 
     }
 
-    public function update(Request $request, Movement $movement)
+    public function update(Request $request, $account_id, $movement_id)
     {
     	$this->authorize('update', $movement);
         $this->validate($request, [
@@ -96,23 +84,20 @@ class MovementsController extends Controller
         $movement->save();
 
         return redirect()
-            ->route('movements')
+            ->route('movements.update')
             ->with('success', 'Movement updated successfully!');
 
 
 
     }
 
-    public function destroy(Movement $movement){
+    public function destroy($id){
 $this->authorize('delete', $movement);
  
         $user->delete();
         return redirect()
             ->route('movements')
             ->with('success', 'Movement deleted successfully!');
-    }
-
-
     }
 
 }

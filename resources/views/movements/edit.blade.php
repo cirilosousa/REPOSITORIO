@@ -8,7 +8,7 @@
     @include('shared.errors')
 @endif
 
-<form action="{{route('movements.edit', $user)}}" method="post" class="form-group">
+<form action="{{route('movements.edit', $movement)}}" method="post" class="form-group">
     {{method_field('PUT')}}
     @include('movements.partials.add-edit')
     <div class="form-group">

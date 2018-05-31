@@ -29,18 +29,13 @@
                         <td>{{ $movement->end_balance}}</td>
 
                         <td>
-                            <a class="btn btn-xs btn-primary active emlinha" href="movement/{{$movement->id}}">Edit</a>   
+                            <a class="btn btn-xs btn-primary active emlinha" href="/movements/{{$movement->account_id}}/{{$movement->id}}">Edit</a>   
 
-                            <form action="movement/{{$movement->id}}" method="POST" role="form" class="emlinha">
+                            <form action="movements/{{$movement->account_id}}/{{$movement->id}}" method="POST" role="form" class="emlinha">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <button class="btn btn-xs btn-danger active">Delete</button>
                             </form>
-
-                            
-
-
-
                         </td>
                     </tr>
                 @endforeach
