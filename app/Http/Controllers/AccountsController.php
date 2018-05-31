@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Account;
+use SoftDeletes;
+use Auth;
 
 
 class AccountsController extends Controller
@@ -15,10 +17,48 @@ class AccountsController extends Controller
         $this->middleware('auth'); //->except('index');
     }
 
-    public function index($id)
-    {
-        $accounts = User::find($id)->accounts;
-        var_dump($accounts);
-        //return view('accounts', compact('accounts'));
+
+    public function fullindex($id){
+   		$accounts = Account::withTrashed()
+ 						   ->where('owner_id', $id)
+ 						   ->get();        
+    	return view('account.index', compact('accounts'));
+    }
+
+
+    public function openedindex($id){
+        $accounts = Account::where('owner_id', $id)
+   						     ->get();
+    	return view('account.index', compact('accounts'));
+    }
+
+    public function closedindex($id){
+   		$accounts = Account::onlyTrashed()
+   						   ->where('owner_id', $id)
+   						   ->get();   
+    	return view('account.index', compact('accounts'));
+    }
+
+    public function destroy($id){
+    	$account = Account::find($id);
+    	$account->forceDelete();
+    }
+
+    public function close($id){
+		$account = Account::find($id);
+    	$account->delete();	     
+    }
+
+    public function reopen($id){
+    	$account = Account::find($id);
+    	$account->restore();	      
+    }
+
+    public function create(){
+     
+    }
+
+    public function edit(){
+     
     }
 }

@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Account extends Model
 { 
+
+    use SoftDeletes;
+
     protected $fillable = [
         'id', 
         'owner_id', 
@@ -25,7 +29,7 @@ class Account extends Model
   
   public function type()
     {
-        switch ($this->type) {
+        switch ($this->account_type_id) {
             case 0:
                 return 'Bank Account';
             case 1:

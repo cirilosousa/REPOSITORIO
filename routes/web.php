@@ -12,9 +12,7 @@
 */
 
 
-Route::get('/', function () {
-	return view('welcome');
-});
+Route::get('/', 'HomeController@show')->name('/');
 
 Route::get('/about', function () {
 	return view('about');
@@ -37,7 +35,15 @@ Route::get('/me/associate-of', 'Profiles\AssociateOfController@index')->name('me
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); 
 
-Route::get('/accounts/{user}', 'AccountsController@index')->name('accounts');
+//accounts
+Route::get('/accounts/{user}', 'AccountsController@fullindex')->name('accounts.index');
+Route::get('/accounts/{user}/opened', 'AccountsController@openedindex')->name('accounts.opened');
+Route::get('/accounts/{user}/closed', 'AccountsController@closedindex')->name('accounts.closed');
+Route::delete('/account/{account}', 'AccountsController@destroy')->name('account.destroy');
+Route::patch('/account/{account}/close', 'AccountsController@close')->name('account.close');
+Route::patch('/account/{account}/reopen', 'AccountsController@reopen')->name('account.reopen');
+Route::post('/account/', 'AccountsController@create')->name('account.create');
+Route::put('/account/{account}', 'AccountsController@edit')->name('account.edit');
 
 //movements
 Route::get('/movements/{account}', 'MovementsController@index')->name('movements');
