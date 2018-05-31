@@ -71,10 +71,13 @@ class UsersController extends Controller
   }
 
   public function count() {
-      $users = User::all();
+      $usersCount = User::all()->count();
 
 
-      return view('profiles.users', compact('count($users)'));
+      return view('profiles.users', compact('$users'));
+      
+
+
   }
 
 }

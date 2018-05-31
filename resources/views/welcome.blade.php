@@ -76,6 +76,8 @@
                 <div class="title m-b-md">
                     WELCOME PAGE
                     <p>Statistics</p>
+                    <p>Total Users:{{$users->count()}}</p>
+                    <p>Active Users:{{$activeUsers->count()}}</p>
                     
 
                 </div>
