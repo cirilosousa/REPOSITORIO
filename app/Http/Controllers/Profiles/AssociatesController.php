@@ -17,7 +17,7 @@ class AssociatesController extends Controller
 
     public function index() {
                      
-        $associates = User::find(Auth::user()->id)->associates;
+        $associates = User::find()->associates;
 
         return view('profiles.associates', compact('associates'));
     }

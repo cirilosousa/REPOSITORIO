@@ -39,26 +39,33 @@ class DashboardController extends Controller
         }else{
             //define var
             $saldo = 0;
-
+            $listaSaldos = array();
+            $pos = 0;
+            
+            $percentSaldo = array();
             //somatorio do saldo
             foreach ($lista as $conta) {
 
+                $listaSaldos[$pos] = $conta->current_balance;
                 $saldo += $conta->current_balance;
+                $pos++;
             }
+
+
+            //percentagem do saldo
+            for ($i=0; $i < $pos ; $i++) { 
+                
+            $percentSaldo[$i] = number_format($listaSaldos[$i] / $saldo, 2, '.', ',');                 
+            }
+            
         }
-
-
-
 
         
 
 
+        
 
-
-
-
-
-        return view('dashboard', compact('saldo', 'lista'));
+        return view('dashboard', compact('saldo', 'lista', 'listaSaldos', 'percentSaldo'));
         
 
 
