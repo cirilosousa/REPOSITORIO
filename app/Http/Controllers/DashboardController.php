@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use App\User;
+use App\User;
+use App\Account;
 
 class DashboardController extends Controller
 {
@@ -24,6 +25,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
+
+
+        $totalMontante = User::Account;
         return view('dashboard');
     }
 }

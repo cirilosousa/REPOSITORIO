@@ -18,21 +18,21 @@ class UsersController extends Controller
 
             $admin = $request->has('admin');
             $blocked = $request->has('blocked');
-                
+
             if (empty($request->input('name'))){                
                 $users = User::where('admin', $admin)  
-                             ->where('blocked', $blocked)  
-                             ->get();
+                ->where('blocked', $blocked)  
+                ->get();
             }
             
             else {
                 $request->validate(['name' => 'regex:/^[\pL\s]+$/u',],
-                                   ['name.regex' => 'Only letters and spaces.',]);
+                 ['name.regex' => 'Only letters and spaces.',]);
                 
                 $users = User::where ('name', 'like' , '%' . $request->input('name') . '%')
-                             ->where('admin', $admin)  
-                             ->where('blocked', $blocked)  
-                             ->get();
+                ->where('admin', $admin)  
+                ->where('blocked', $blocked)  
+                ->get();
             }
         }
         else{
@@ -44,29 +44,35 @@ class UsersController extends Controller
 
     public function block($id) {
         User::where('id', $id)
-            ->update(['blocked' => 1]);
+        ->update(['blocked' => 1]);
         
         return redirect()->route('users');        
     }
 
     public function unblock($id) {
         User::where('id', $id)
-            ->update(['blocked' => 0]);
+        ->update(['blocked' => 0]);
         
         return redirect()->route('users');
     }
 
     public function promote($id) {
         User::where('id', $id)
-            ->update(['admin' => 1]);
+        ->update(['admin' => 1]);
         
         return redirect()->route('users');
     }
 
     public function demote($id) {
-          USer::where('id', $id)
-              ->update(['admin' => 0]);
-        
-        return redirect()->route('users');
-    }
+      User::where('id', $id)
+      ->update(['admin' => 0]);
+
+      return redirect()->route('users');
+  }
+
+      
+
+
+
+
 }
