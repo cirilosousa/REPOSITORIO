@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Database\seeds\TypesSeeder;
 use App\User;
 use App\Account;
-
+use Hash;
 
 class MovementsController extends Controller
 {
