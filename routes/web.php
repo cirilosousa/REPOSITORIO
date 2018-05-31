@@ -50,7 +50,7 @@ Route::delete('movement/{movement}', 'MovementsController@destroy')->name('movem
 
 
 //Documents
-
+Route::get('getfile/{path}', 'DocumentsController@getfile')->name('documents');
 
 
                  

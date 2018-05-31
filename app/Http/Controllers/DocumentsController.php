@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class DocumentsController extends Controller
 {
-    //
+   public function getfile($path) {
+   	return response()->file(storage_path('app/img/' . $path));
+   }
 }
