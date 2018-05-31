@@ -77,12 +77,12 @@ class MovementsController extends Controller
 
     public function update(Request $request, $account_id, $movement_id)
     {
-    	$this->authorize('update', $movement);
+    	$this->authorize('update', $movements);
         $this->validate($request, [
             
         ]);
-        $movement->fill($request);
-        $movement->save();
+        $movements->fill($request);
+        $movements->save();
 
         return redirect()
             ->route('movements.update')
@@ -93,9 +93,9 @@ class MovementsController extends Controller
     }
 
     public function destroy($id){
-$this->authorize('delete', $movement);
+$this->authorize('delete', $movements);
  
-        $user->delete();
+        $movements->delete();
         return redirect()
             ->route('movements')
             ->with('success', 'Movement deleted successfully!');
