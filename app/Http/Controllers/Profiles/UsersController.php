@@ -70,14 +70,9 @@ class UsersController extends Controller
       return redirect()->route('users');
   }
 
-  public function count() {
-      $usersCount = User::all()->count();
-
-
-      return view('profiles.users', compact('$users'));
       
 
 
-  }
+
 
 }
