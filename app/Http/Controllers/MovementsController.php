@@ -52,7 +52,7 @@ class MovementsController extends Controller
             Storage::setVisibility($path, 'documents');
         }     
 
-    	return $movement;
+    	return $movements;
     }
 
     public function store(StoreMovementRequest $request){

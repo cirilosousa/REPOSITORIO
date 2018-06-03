@@ -3,6 +3,12 @@
 @section('title', 'List Movements')
 
 @section('content')
+               @if ($id==Auth::account()->id)
+    <a class="btn btn-xs btn-primary active emlinha" href="/movements/{{$account_id}}/create">Add Movement</a>  
+    @endif
+
+
+                 
 
     @if(count($movements))
 
