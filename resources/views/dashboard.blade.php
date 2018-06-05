@@ -6,47 +6,55 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Your Stats</div>
-                <p>Total accounts: {{ count($lista)}}</p>
+                <p>Total accounts: {{ count($lista) }}</p>
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
                     <div>
+                        
+
+                        @if(isset($saldo))
+
+
+
+                        @foreach($lista as $account)
+                        
+                        <li>
+                            {{ $account->current_balance }}               
+                        </li>
+                        
+                        @endforeach
+
+                        <p>-------------------------------------</p>
+
+
+
+
+
+                        @foreach ( $percentSaldo as $valor )
+                        <li>{{ $valor }}</li>
+                        @endforeach
+
+
+
+
+                        @else
+                        Saldo não definido
+                        @endif
+                       
+                        
+                    </div>
 
                     @if(isset($saldo))
 
-
-                    @foreach($lista as $account)
-                        
-                    <li>
-                    {{ $account->current_balance }}               
-                    </li>
-                        
-                    @endforeach
-
-                    <p>----------------------------</p>
-
-                   
-
-
-
-                    @foreach ( $percentSaldo as $valor )
-                    <li>{{ $valor }}</li>
-                    @endforeach
-
-                
-                
-
-                    @else
-                    Saldo não definido
-                    @endif
-                    </div>
-
                     <p>O saldo atual é:{{$saldo}}</p>
+
+                    @endif
 
                     You are logged in!
                     show status
