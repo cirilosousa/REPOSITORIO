@@ -32,12 +32,9 @@ class DashboardController extends Controller
         $lista = User::find(Auth::user()->id)->accounts;
 
 
-
-
-
         //1º elemento da lista a null
         if (empty($lista)) {
-           
+
             return view('dashboard');
 
         }else{
