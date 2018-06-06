@@ -18,6 +18,10 @@ Route::get('/about', function () {
 	return view('about');
 })->name('about');
 
+Route::get('/example', function() {
+	return view('example');
+})->name('example'); 
+
 
 Auth::routes();
 Route::get('/users', 'Profiles\UsersController@index')->name('users');

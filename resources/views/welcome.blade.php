@@ -54,7 +54,7 @@
     }
 
     .m-b-md {
-        margin-bottom: 30px;
+        margin-bottom: 150px;
     }
 
     .stats{
@@ -63,6 +63,8 @@
         font-size: 25px;
 
     }
+
+    h2 {margin: 0;}
 
 </style>
 </head>
@@ -96,8 +98,7 @@
             </div>
 
             <div class="links">
-                {{-- <a href="{{route('example')}}">Example</a>--}}
-                <a href="https://laracasts.com">Laracasts</a>
+                <a href="{{route('example')}}">Example</a>
                 <a href="https://laravel-news.com">News</a>
                 <a href="https://forge.laravel.com">Forge</a>
                 <a href="{{route('about')}}">About US</a>
