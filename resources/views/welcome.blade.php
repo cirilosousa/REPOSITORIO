@@ -36,11 +36,11 @@
     }
 
     .content {
-        text-align: left;
+        text-align: center;
     }
 
     .title {
-        font-size: 84px;
+        font-size: 70px;
     }
 
     .links > a {
@@ -80,9 +80,10 @@
         @endif
 
         <div class="content">
+            <div class="row justify-content-center">
             <div class="title m-b-md">
-                WELCOME PAGE
-                <p>Statistics</p>
+                <h2>WELCOME</h2>
+                <h3>Statistics</h3>
 
                 <div class="stats">
                     <p>Total Users:{{$users}}</p>
@@ -102,6 +103,7 @@
                 <a href="{{route('about')}}">About US</a>
             </div>
         </div>
+    </div>
     </div>
 </body>
 </html>
