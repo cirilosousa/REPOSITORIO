@@ -9,10 +9,14 @@
 	<title>About Us</title>
 </head>
 <body>
+
+<div>
 	<h1>About US</h1>
-	<h2>António Silva</h2>
-	<h2>Cirilo Sousa</h2>
-	<h2>Marta Santos</h2>
+	<p>António Silva</p>
+	<p>Cirilo Sousa</p>
+	<p>Marta Santos</p>
+</div>
+
 
 </body>
 </html>

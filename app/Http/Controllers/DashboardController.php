@@ -29,10 +29,11 @@ class DashboardController extends Controller
     {
 
         //Auth::user()->id
-        $lista = User::find(11)->accounts;
+        $lista = User::find(Auth::user()->id)->accounts;
+
 
         //1º elemento da lista a null
-        if ($lista->first() === null) {
+        if (empty($lista)) {
 
             return view('dashboard');
 
@@ -54,8 +55,9 @@ class DashboardController extends Controller
 
             //percentagem do saldo
             for ($i=0; $i < $pos ; $i++) { 
-                
-            $percentSaldo[$i] = number_format($listaSaldos[$i] / $saldo, 2, '.', ',');                 
+
+                $percentSaldo[$i] = number_format($listaSaldos[$i] / $saldo, 2, '.', ',') *100;
+
             }
             
         }
