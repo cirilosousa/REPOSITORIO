@@ -18,7 +18,7 @@
                     <div>
                         
 
-                        @if(isset($saldo))
+                        @if( count($lista)  != 0)
 
 
 
@@ -50,9 +50,9 @@
                         
                     </div>
 
-                    @if(isset($saldo))
+                    @if(count($lista)  != 0)
 
-                    <p>O saldo atual é:{{$saldo}}</p>
+                    <p>O saldo atual é: {{$saldo}}</p>
 
                     @endif
 
