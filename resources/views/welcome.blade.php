@@ -40,7 +40,7 @@
     }
 
     .title {
-        font-size: 84px;
+        font-size: 70px;
     }
 
     .links > a {
@@ -82,7 +82,7 @@
         <div class="content">
             <div class="row justify-content-center">
             <div class="title m-b-md">
-                <h1>WELCOME</h1>
+                <h2>WELCOME</h2>
                 <h3>Statistics</h3>
 
                 <div class="stats">
