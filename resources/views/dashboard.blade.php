@@ -6,7 +6,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Your Stats</div>
-                <p>Total accounts: {{ count($lista) }}</p>
+                
+                
+
 
                 <div class="card-body">
                     @if (session('status'))
@@ -16,6 +18,8 @@
                     @endif
 
                     <div>
+                        <h1>You are logged in!</h1>
+                        <h2>Total accounts: {{ count($lista) }}</h2>
 
 
                         @if( count($lista)  != 0)
