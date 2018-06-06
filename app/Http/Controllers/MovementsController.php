@@ -42,14 +42,14 @@ class MovementsController extends Controller
     	return view('movements.add', compact('account'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request, $account_id){
 
-    	$movements = new movement();
+    	$movement = new movement();
     	$account=Account::findOrFail($account_id);
 
-    	$movements->account_id=$account_id;
+    	$movement->account_id=$account_id;
 
-    	$movements=Validator::make($data, [
+    	$movement=Validator::make($data, [
             'movement_category_id' => 'required',
             'type' => 'required',
             'date' => 'required|date|date_format:Y-m-d', //photo
@@ -57,8 +57,8 @@ class MovementsController extends Controller
             'description' => 'string|min:0|max:255',
         ]);
 
-        $movements->fill($movements);
-        $movements->save();
+        $movement->fill($movement);
+        $movement->save();
 
         return redirect(route('movements'));
     }
