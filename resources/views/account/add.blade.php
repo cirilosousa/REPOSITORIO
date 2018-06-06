@@ -3,10 +3,6 @@
 
 @section('content')
 
-@if (count($errors) > 0)
-    @include('shared.errors')
-@endif
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -23,24 +19,21 @@
 
                             <div class="col-md-6">
                                 <select name="account_type_id">
-                                    <option value="0" selected>
+                                    <option value="1" selected>
                                     Bank Account
                                     </option>
-                                    <option value="1">
+                                    <option value="2">
                                     Pocket Money
                                     </option>
-                                    <option value="2">
+                                    <option value="3">
                                     PayPal Account
                                     </option>
-                                    <option value="3">
+                                    <option value="4">
                                     Credit Card
                                     </option>
-                                    <option value="4">
+                                    <option value="5">
                                     Meal Card 
                                     </option>     
-                                    <option value="5">
-                                    Other
-                                    </option>    
                                 </select>  
                             </div>
                         </div>

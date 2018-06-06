@@ -37,7 +37,7 @@
             <tbody>
                 @foreach ($accounts as $account)
                     <tr>
-                        <td>{{ $account->code }}</td>
+                        <td><a class="btn btn-xs btn-info active" href="/movements/{{$account->code}}"> {{ $account->code }} </a></td>
                         <td>{{ $account->type() }}</td>
                         <td>{{ $account->current_balance }}</td>
                         <td>

@@ -9,7 +9,7 @@ class Account extends Model
 { 
 
     use SoftDeletes;
-    protected $dates = ['deleted_at'];
+    public $timestamps = false;
 
     protected $fillable = [
         'id', 
@@ -31,17 +31,17 @@ class Account extends Model
   public function type()
     {
         switch ($this->account_type_id) {
-            case 0:
-                return 'Bank Account';
             case 1:
-                return 'Pocket Money';
+                return 'Bank Account';
             case 2:
-                return 'PayPal Account';
+                return 'Pocket Money';
             case 3:
-                return 'Credit Card';
+                return 'PayPal Account';
             case 4:
-                return 'Meal Card';
+                return 'Credit Card';
             case 5:
+                return 'Meal Card';
+            case 6:
                 return 'Other';
         }
     }
