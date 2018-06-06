@@ -8,8 +8,8 @@
     @include('shared.errors')
 @endif
 
-<form action="{{ route('movements.store') }}" method="post" class="form-group">
-    @include('movements.partials.add-edit')
+<form action="{{route('movements.store', $account->id)}}" method="post" class="form-group">
+
 
     <div class="form-group">
         <select name="Category" multiple>

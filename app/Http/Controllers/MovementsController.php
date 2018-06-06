@@ -19,8 +19,9 @@ class MovementsController extends Controller
 
     public function index($id){
 
-    $movements = Account::find($id)->movements;        
-    return view('movements.index', compact('movements'));
+    $movements = Account::find($id)->movements;   
+    $account=Account::findOrFail($id);     
+    return view('movements.index', compact('movements', 'account'));
     }
 
     /*protected function validator(array $data)
@@ -34,7 +35,7 @@ class MovementsController extends Controller
         ]);
     }*/
 
-    
+
    public function create($id){
     	$account=Account::findOrFail($id);
     	return view('movements.add', compact('account'));
@@ -59,9 +60,7 @@ class MovementsController extends Controller
         $movements->save();
 
         return redirect(route('movements'));
-
-    	
-    ;
+    }
 
     public function edit($account_id, $movement_id){
     	$this->authorize('update', $movement_id);

@@ -1,15 +1,5 @@
 {{ csrf_field() }}
-@extends('layouts.app')
 
-@section('title', 'Create User')
-
-@section('content')
-
-@if (count($errors) > 0)
-    @include('shared.errors')
-@endif
-
-<form action="{{route('movements.edit') }}" method="post" class="form-group">
  <div class="form-group">
         <select name="Category" multiple>
             <option value="Expenses">Expenses</option>
