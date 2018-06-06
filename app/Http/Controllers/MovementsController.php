@@ -23,7 +23,7 @@ class MovementsController extends Controller
     return view('movements.index', compact('movements'));
     }
 
-    protected function validator(array $data)
+    /*protected function validator(array $data)
     {
         return Validator::make($data, [
             'movement_category_id' => 'required',
@@ -32,41 +32,36 @@ class MovementsController extends Controller
             'value' => 'required|numeric| min:0.05|max:5000',
             'description' => 'string|min:0|max:255',
         ]);
+    }*/
+
+    
+   public function create($id){
+    	$account=Account::findOrFail($id);
+    	return view('movements.add', compact('account'));
     }
 
-    public function create(array $data){
-    	$movements = Movement::create([
-            'date' => $data['date'],
-            'movement_category_id' => $data['movement_category_id'],
-            'type' => $data['type'],
-            'date' => $data['date'], //photo
-            'value' => $data['value'],
-            'description' => $data['description'],
-        ]); 
-
-        $file = $data['document_id']; 
-
-         if ($file->isValid()) {
-            $path= $file->store('documents');
-            $movements->update(['document_id' => basename($path) ]);
-            Storage::setVisibility($path, 'documents');
-        }     
-
-    	return $movements;
-    }
-
-    public function store(StoreMovementRequest $request){
-    	$this->authorize('create', Movement::class);
+    public function store(Request $request){
 
     	$movements = new movement();
-    	$movements->fill($request->all());
-    	$movements->save();
+    	$account=Account::findOrFail($account_id);
 
-    	return redirect()
-    	->route('movements')
-    	->with('success','Movement added successfully');
-    }
+    	$movements->account_id=$account_id;
 
+    	$movements=Validator::make($data, [
+            'movement_category_id' => 'required',
+            'type' => 'required',
+            'date' => 'required|date|date_format:Y-m-d', //photo
+            'value' => 'required|numeric| min:0.05|max:5000',
+            'description' => 'string|min:0|max:255',
+        ]);
+
+        $movements->fill($movements);
+        $movements->save();
+
+        return redirect(route('movements'));
+
+    	
+    ;
 
     public function edit($account_id, $movement_id){
     	$this->authorize('update', $movement_id);
