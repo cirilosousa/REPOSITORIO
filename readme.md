@@ -12,3 +12,6 @@
 entrar no vagrant ssh dentro do projeto e correr
 composer update
 
+##Notas do que está a falhar
+
+O dropdown deixou de funcionar, Cirilo se conseguires dá uma olhadela.
