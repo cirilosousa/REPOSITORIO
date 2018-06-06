@@ -3,20 +3,23 @@
 
 @section('title', 'About Us')
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>About Us</title>
-</head>
-<body>
 
-<div>
-	<h1>About US</h1>
-	<p>António Silva</p>
-	<p>Cirilo Sousa</p>
-	<p>Marta Santos</p>
+	@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+
+                <div class="card-header">About US</div>
+                 <div class="card-body">			
+					<h1></h1>
+					<ul>António Silva</ul>
+					<ul>Cirilo Sousa</ul>
+					<ul>Marta Santos</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
-
-</body>
-</html>
+@endsection

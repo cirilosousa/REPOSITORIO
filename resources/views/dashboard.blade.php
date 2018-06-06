@@ -16,7 +16,7 @@
                     @endif
 
                     <div>
-                        
+
 
                         @if( count($lista)  != 0)
 
@@ -33,6 +33,11 @@
                         <p>-------------------------------------</p>
 
 
+                        <div id="chart-div"></div>
+                        
+                        <?= Lava::render('DonutChart', 'Resume', 'chart-div') ?>
+
+                        <p>---------------------------------------------</p>
 
 
 
@@ -44,15 +49,15 @@
 
 
                         @else
-                        Saldo não definido
+                        Balance not defined
                         @endif
-                       
+
                         
                     </div>
 
                     @if(count($lista)  != 0)
 
-                    <p>O saldo atual é: {{$saldo}}</p>
+                    <p>Current balance: {{$saldo}}</p>
 
                     @endif
 
@@ -62,7 +67,7 @@
                     show everything
 
                     <dir>
-                        
+
                     </dir>
 
                 </div>

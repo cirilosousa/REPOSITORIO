@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Account;
 use Auth;
+use Khill\Lavacharts\Lavacharts;
 
 class DashboardController extends Controller
 {
@@ -52,23 +53,37 @@ class DashboardController extends Controller
                 $pos++;
             }
 
+//percentagem do saldo
+            //garantir que não divide por 0
+            if($saldo != 0){
 
-            //percentagem do saldo
-            for ($i=0; $i < $pos ; $i++) { 
+                $contas  = \Lava::DataTable();
 
-                $percentSaldo[$i] = number_format($listaSaldos[$i] / $saldo, 2, '.', ',') *100;
+                $contas->addStringColumn('Accounts')
+                       ->addNumberColumn('Percent');
+               
 
+                for ($i=0; $i < $pos ; $i++) {
+
+                    
+
+                    $percentSaldo[$i] = number_format($listaSaldos[$i] / $saldo, 2, '.', ',') *100;
+
+                            $contas->addRow(['Account '.($i+1) , $percentSaldo[$i]]);
+
+                }
+
+                \Lava::DonutChart('Resume', $contas, [
+                    'title' => 'All my accounts'
+                ]);
+
+      
             }
             
         }
 
-        
-
-
-        
-
         return view('dashboard', compact('saldo', 'lista', 'listaSaldos', 'percentSaldo'));
-        
+
 
 
     }
