@@ -51,7 +51,7 @@ Route::get('/movements/{account}', 'MovementsController@index')->name('movements
 Route::get('movements/{account}/create', 'MovementsController@create')->name('movements.create');
 Route::post('movements/{account}/create', 'MovementsController@store')->name('movements.store');
 Route::get('movements/{account}/{movement}', 'MovementsController@edit')->name('movements.edit');
-Route::put('movements/{account}/{movement}', 'MovementsController@update')->name('movements.update');
+Route::put('movements/{account}/{movement}', 'MovementsController@update')->name('movementsupdate');
 Route::delete('movements/{account}/{movement}', 'MovementsController@destroy')->name('movements.destroy');
 
 

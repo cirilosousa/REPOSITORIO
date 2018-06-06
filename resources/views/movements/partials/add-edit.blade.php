@@ -1,22 +1,23 @@
 {{ csrf_field() }}
 
  <div class="form-group">
-        <select name="Category" multiple>
-            <option value="Expenses">Expenses</option>
-            <option value="Revenue">Revenue</option>
+        <select name="category" id="category">
+            <option value="expense">Expenses</option>
+            <option value="revenue">Revenue</option>
         </select>
     </div>
     <div class="form-group">
-        <select name="revenue[]" multiple>
+        <select name="revenue" id="revenues">
             <option value="bonus">bonus </option>
             <option value="royalties">royalties </option>
             <option value="interests">interests </option>
             <option value="gifts">gifts </option>
             <option value="dividends">dividends </option>
             <option value="products sales">products sales </option>
+        </select>
     </div>
     <div class="form-group">
-        <select name="expense[]" multiple>
+        <select name="expense" id="expenses">
             <option value="clothes">clothes</option>
             <option value="services">services </option>
             <option value="electricity">electricity </option>
@@ -45,5 +46,3 @@
     <div>
         <textarea name="textarea_field" rows="3" cols="30">Description</textarea>
     </div>
-</form>
-@endsection

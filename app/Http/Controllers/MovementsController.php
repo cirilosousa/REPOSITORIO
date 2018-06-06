@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Exceptions;
 use App\Http\Controllers\Controller;
 use App\Database\seeds\TypesSeeder;
+use App\Movement;
 use App\User;
 use App\Account;
 use Hash;
@@ -63,17 +64,24 @@ class MovementsController extends Controller
     }
 
     public function edit($account_id, $movement_id){
-    	$this->authorize('update', $movement_id);
-        return view('movements.edit', compact('movements'));
+    	//$this->authorize('update', $movement_id);
+    	$movement=Movement::findOrFail($movement_id);
+    	$account=Account::findOrFail($account_id);
+        return view('movements.edit', compact('account', 'movement'));
 
 
     }
 
     public function update(Request $request, $account_id, $movement_id)
     {
-    	$this->authorize('update', $movements);
-        $this->validate($request, [
-            
+    	$movement=Movement::findOrFail($movement_id);
+    	$account=Account::findOrFail($account_id);
+        $movements=Validator::make($data, [
+            'movement_category_id' => 'required',
+            'type' => 'required',
+            'date' => 'required|date|date_format:Y-m-d', //photo
+            'value' => 'required|numeric| min:0.05|max:5000',
+            'description' => 'string|min:0|max:255',
         ]);
         $movements->fill($request);
         $movements->save();
@@ -87,7 +95,8 @@ class MovementsController extends Controller
     }
 
     public function destroy($id){
-$this->authorize('delete', $movements);
+    	
+    	$movement=Movement::findOrFail($id);
  
         $movements->delete();
         return redirect()

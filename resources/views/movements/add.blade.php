@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create User')
+@section('title', 'Create Movement')
 
 @section('content')
 
@@ -66,7 +66,7 @@
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-success" name="ok">Add</button>
-        <a class="btn btn-default" href="{{ route('movements') }}">Cancel</a>
+        <a class="btn btn-default" href="{{ route('movements')}}">Cancel</a>
     </div>
 </form>
 @endsection
