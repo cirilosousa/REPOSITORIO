@@ -30,7 +30,7 @@ class DashboardController extends Controller
     {
 
         //Auth::user()->id
-        $lista = User::find(Auth::user()->id)->accounts;
+        $lista = User::find(16)->accounts;
         $id = Auth::user()->id;
 
         //1º elemento da lista a null

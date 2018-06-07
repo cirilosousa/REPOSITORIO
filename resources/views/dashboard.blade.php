@@ -35,19 +35,23 @@
                         
                         @endforeach
 
-                        <p>-------------------------------------</p>
+                        <hr>
 
 
                         <div id="chart-div"></div>
                         
                         <?= Lava::render('DonutChart', 'Resume', 'chart-div') ?>
 
-                        <p>---------------------------------------------</p>
+                        
+                        
+                        <hr>
+
+
 
 
 
                         @foreach ( $percentSaldo as $valor )
-                        <li>{{ $valor }}</li>
+                        <li>{{ $valor }}%</li>
                         @endforeach
 
 
@@ -69,25 +73,17 @@
 
                     
 
-    <div class="btn btn-xs btn-primary active emlinha" href="/accounts/{{$id}}">All accounts</a> 
-    </div>   
+                    <div>
+                       <a class="btn btn-xs btn-primary active emlinha" href="/accounts/{{$id}}">All accounts</a>
+                   </div>   
 
-    <br>            
-                    
+                   <dir>
 
+                   </dir>
 
-                    You are logged in!
-                    show status
-                    show accouts
-                    show everything
-
-                    <dir>
-
-                    </dir>
-
-                </div>
-            </div>
-        </div>
-    </div>
+               </div>
+           </div>
+       </div>
+   </div>
 </div>
 @endsection
