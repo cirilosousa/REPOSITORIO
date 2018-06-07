@@ -83,28 +83,25 @@
 
         <div class="content">
             <div class="row justify-content-center">
-            <div class="title m-b-md">
-                <h2>WELCOME</h2>
-                <h3>Statistics</h3>
+                <div class="title m-b-md">
+                    <h2>WELCOME</h2>
+                    <h3>Statistics</h3>
 
-                <div class="stats">
-                    <p>Total Users:{{$users}}</p>
-                    <p>Active Users:{{$activeUsers}}</p>
-                    <p>Total Movements:{{$movements}}</p>
-                    <p>Total Accounts:{{$accounts}}</p>
+                    <div class="stats">
+                        <p>Total Users:{{$users}}</p>
+                        <p>Active Users:{{$activeUsers}}</p>
+                        <p>Total Movements:{{$movements}}</p>
+                        <p>Total Accounts:{{$accounts}}</p>
+                    </div>
+
                 </div>
 
-
-            </div>
-
-            <div class="links">
-                <a href="{{route('example')}}">Example</a>
-                <a href="https://laravel-news.com">News</a>
-                <a href="https://forge.laravel.com">Forge</a>
-                <a href="{{route('about')}}">About US</a>
+                <div class="links">
+                    <a href="{{route('example')}}">Example</a>
+                    <a href="{{route('about')}}">About US</a>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </body>
 </html>
