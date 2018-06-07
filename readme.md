@@ -15,3 +15,5 @@ composer update
 ##Notas do que está a falhar
 
 O dropdown deixou de funcionar, Cirilo se conseguires dá uma olhadela.
+
+Adicionar botão na dashboard

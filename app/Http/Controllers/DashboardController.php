@@ -31,7 +31,7 @@ class DashboardController extends Controller
 
         //Auth::user()->id
         $lista = User::find(Auth::user()->id)->accounts;
-
+        $id = Auth::user()->id;
 
         //1º elemento da lista a null
         if (empty($lista)) {
@@ -82,7 +82,7 @@ class DashboardController extends Controller
             
         }
 
-        return view('dashboard', compact('saldo', 'lista', 'listaSaldos', 'percentSaldo'));
+        return view('dashboard', compact('saldo', 'lista', 'listaSaldos', 'percentSaldo', 'id'));
 
 
 

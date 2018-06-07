@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -64,6 +65,16 @@
                     <p>Current balance: {{$saldo}}</p>
 
                     @endif
+
+
+                    
+
+    <div class="btn btn-xs btn-primary active emlinha" href="/accounts/{{$id}}">All accounts</a> 
+    </div>   
+
+    <br>            
+                    
+
 
                     You are logged in!
                     show status
