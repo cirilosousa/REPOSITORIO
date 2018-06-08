@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Movement extends Model
 {
-   
+   public $timestamps = false;
     /**
      * The attributes that are mass assignable.
      *
