@@ -41,8 +41,6 @@ class Account extends Model
                 return 'Credit Card';
             case 5:
                 return 'Meal Card';
-            case 6:
-                return 'Other';
         }
     }
 
