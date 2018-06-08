@@ -8,7 +8,13 @@
     @include('shared.errors')
 @endif
 
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Create Movement') }}</div>
 
+                <div class="card-body">
 <form action="{{route('movements.edit', [$account->id, $movement->id])}}" method="post" class="form-group">
     {{method_field('PUT')}}
     @include('movements.partials.add-edit')
@@ -33,5 +39,10 @@
 	        });
 	    });
     </script>
-
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 @endsection()

@@ -22,6 +22,8 @@
             </thead>
         
             <tbody>
+
+            
                 @foreach ($movements as $movement)
                     <tr>              
                         <td>{{ $movement->movement_category_id}}</td>

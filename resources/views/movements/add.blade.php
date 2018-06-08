@@ -7,7 +7,13 @@
 @if (count($errors) > 0)
     @include('shared.errors')
 @endif
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Create Movements') }}</div>
 
+                <div class="card-body">
 <form action="{{route('movements.store', $account->id)}}" method="post" class="form-group">
 @include('movements.partials.add-edit')
 
@@ -32,3 +38,9 @@
         });
     </script>
 @endsection
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

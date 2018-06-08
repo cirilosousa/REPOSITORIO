@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Exceptions;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\Database\seeds\TypesSeeder;
 use App\Movement;
@@ -25,7 +26,7 @@ class MovementsController extends Controller
     return view('movements.index', compact('movements', 'account'));
     }
 
-    /*protected function validator(array $data)
+    protected function validator(array $data)
     {
         return Validator::make($data, [
             'movement_category_id' => 'required',
@@ -34,7 +35,7 @@ class MovementsController extends Controller
             'value' => 'required|numeric| min:0.05|max:5000',
             'description' => 'string|min:0|max:255',
         ]);
-    }*/
+    }
 
 
    public function create($id){
@@ -49,13 +50,23 @@ class MovementsController extends Controller
 
     	$movement->account_id=$account_id;
 
-    	$movement=Validator::make($data, [
+    	$request=validate($data, [
             'movement_category_id' => 'required',
             'type' => 'required',
             'date' => 'required|date|date_format:Y-m-d', //photo
             'value' => 'required|numeric| min:0.05|max:5000',
             'description' => 'string|min:0|max:255',
         ]);
+
+    	$movement=Movement::create($data, [
+            'movement_category_id' => $request->input('movement_category_id'),
+            'type' => $request->input('type'),
+            'date' =>$request->input('date'), //photo
+            'value' => $request->input('value'),
+            'description' =>$request->input('description'),
+            'account_id' => $account,
+            'created_at' => time() ,]);	
+     
 
         $movement->fill($movement);
         $movement->save();
