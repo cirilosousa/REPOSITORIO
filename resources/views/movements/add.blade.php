@@ -5,7 +5,7 @@
 @section('content')
 
 @if (count($errors) > 0)
-    @include('shared.errors')
+  
 @endif
 <div class="container">
     <div class="row justify-content-center">
@@ -17,8 +17,11 @@
 <form action="{{route('movements.store', $account->id)}}" method="post" class="form-group">
 @include('movements.partials.add-edit')
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-success" name="ok">Add</button>
+ <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Create Movement') }}
+                                </button>
         <a class="btn btn-default" href="{{ route('movements', $account->id)}}">Cancel</a>
     </div>
 </form>

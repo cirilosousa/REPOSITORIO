@@ -71,7 +71,7 @@ class MovementsController extends Controller
         $movement->fill($movement);
         $movement->save();
 
-        return redirect()->route('movements', ['account_id' => $account->id]);
+        return redirect()->route('movements.index', ['account_id' => $account->id]);
     }
 
     public function edit($account_id, $movement_id){
