@@ -22,7 +22,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Create Movement') }}
                                 </button>
-        <a class="btn btn-default" href="{{ route('movements', $account->id)}}">Cancel</a>
+                             
     </div>
 </form>
 
