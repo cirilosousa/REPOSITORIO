@@ -50,7 +50,7 @@ class MovementsController extends Controller
 
     	$movement->account_id=$account_id;
 
-    	$request=validate($data, [
+    	$request->validate([
             'movement_category_id' => 'required',
             'type' => 'required',
             'date' => 'required|date|date_format:Y-m-d', //photo
@@ -71,7 +71,7 @@ class MovementsController extends Controller
         $movement->fill($movement);
         $movement->save();
 
-        return redirect(route('movements'));
+        return redirect()->route('movements', ['account_id' => $account->id]);
     }
 
     public function edit($account_id, $movement_id){

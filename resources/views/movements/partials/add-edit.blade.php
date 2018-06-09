@@ -49,7 +49,7 @@
                         </div>
     <div>
         <label for="Value" class="col-md-4 col-form-label text-md-right">{{ __('Value') }}</label>
-        <textarea name="text" rows="1" cols="30">Value</textarea>
+        <textarea name="text" rows="1" cols="30"></textarea>
     </div>
     <div class="form-group row">
                             <label for="document_id" class="col-md-4 col-form-label text-md-right">{{ __('document') }}</label>
@@ -66,5 +66,5 @@
                         </div>
     <div>
         <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
-        <textarea name="textarea_field" rows="3" cols="30">Description</textarea>
+        <textarea name="textarea_field" rows="3" cols="30"></textarea>
     </div>
