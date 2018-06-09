@@ -35,6 +35,7 @@
         </select>
     </div>
      <div class="form-group row">
+
                             <label for="date" class="col-md-4 col-form-label text-md-right">{{ __('Date') }}</label>
 
                             <div class="col-md-6">
@@ -47,24 +48,27 @@
                                 @endif
                             </div>
                         </div>
-    <div>
+    <div class="form-group row">
+        
         <label for="Value" class="col-md-4 col-form-label text-md-right">{{ __('Value') }}</label>
-        <textarea name="text" rows="1" cols="30">Value</textarea>
+        <input id="value" type="text" name="value" rows="1" cols="30" value="{{ old('value') }}" required>
+       
+    </div>
+     <div class="form-group row">
+        
+        <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+        <input id="description" type="text" name="description" rows="1" cols="30" value="{{ old('description') }}" required >
+       
     </div>
     <div class="form-group row">
-                            <label for="document_id" class="col-md-4 col-form-label text-md-right">{{ __('document') }}</label>
-                            
-                            <div class="col-md-6">
-                                <input id="document" type="file" class="form-control{{ $errors->has('document') ? ' is-invalid' : '' }}" name="document" value="{{ old('document') }}">
-                                
-                                @if ($errors->has('document'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('document') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-    <div>
-        <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
-        <textarea name="textarea_field" rows="3" cols="30">Description</textarea>
+        <label for="document_id" class="col-md-4 col-form-label text-md-right">{{ __('Document') }}</label>
+        <div class="col-md-6">
+            <input id="document" type="file" class="form-control{{ $errors->has('document') ? ' is-invalid' : '' }}" name="document" value="{{ old('document') }}" required>
+             @if ($errors->has('document'))
+            <span class="invalid-feedback">
+            <strong>{{ $errors->first('document') }}</strong>
+        </span>
+        @endif
     </div>
+</div>
+   
