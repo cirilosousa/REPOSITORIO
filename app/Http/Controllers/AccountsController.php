@@ -33,7 +33,7 @@ class AccountsController extends Controller{
     public function closedindex($id){
    		$accounts = Account::onlyTrashed()
    						  ->where('owner_id', $id)
-   					    ->get();   
+   					      ->get();   
     	return view('account.index', compact('accounts'), compact('id'));
     }
 

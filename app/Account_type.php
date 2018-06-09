@@ -14,7 +14,7 @@ class Account_type extends Model
      */
     protected $fillable = [
         'id',
-        'name', 
+        'name',
     ];
 
     /**

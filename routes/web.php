@@ -51,7 +51,7 @@ Route::post('/account/', 'AccountsController@store')->name('account.store');
 Route::put('/account/update', 'AccountsController@update')->name('account.update');
 
 //movements
-Route::get('/movements/{account}', 'MovementsController@index')->name('movements');
+Route::get('/movements/{account}', 'MovementsController@index')->name('movements.index');
 Route::get('movements/{account}/create', 'MovementsController@create')->name('movements.create');
 Route::post('movements/{account}/create', 'MovementsController@store')->name('movements.store');
 Route::get('movements/{account}/{movement}', 'MovementsController@edit')->name('movements.edit');

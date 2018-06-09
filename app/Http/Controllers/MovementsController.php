@@ -45,33 +45,64 @@ class MovementsController extends Controller
 
     public function store(Request $request, $account_id){
 
-    	$movement = new movement();
-    	$account=Account::findOrFail($account_id);
-
-    	$movement->account_id=$account_id;
+    	//$movement = new movement();
+    	//$movement->account_id=$account_id;
 
     	$request->validate([
-            'movement_category_id' => 'required',
-            'type' => 'required',
-            'date' => 'required|date|date_format:Y-m-d', //photo
-            'value' => 'required|numeric| min:0.05|max:5000',
-            'description' => 'string|min:0|max:255',
+            'date' => 'required|date', //|date_format:Y-m-d', //photo
+            'value' => 'required|numeric| min:0.01|max:5000',
+            'description' => 'string|min:0|max:255',    
         ]);
+    
+        $account=Account::find($account_id);
+        $saldo_inicial = $account->current_balance;
+        
+        if ( $request->input('category') == "revenue") {
+            $tipo_movimento = $request->input('revenue');
+            $saldo_final = $saldo_inicial + $request->input('value');
+        }
 
-    	$movement=Movement::create($data, [
-            'movement_category_id' => $request->input('movement_category_id'),
-            'type' => $request->input('type'),
+        if ( $request->input('category') == "expense") {
+            $tipo_movimento = $request->input('expense');
+            $saldo_final = $saldo_inicial - $request->input('value');
+        }
+        
+        switch ($tipo_movimento) {
+            case 'food': $type_temp = 1; break;
+            case 'clothes': $type_temp = 2; break;
+            case 'services': $type_temp = 3; break;
+            case 'electricity': $type_temp = 4; break;
+            case 'phone': $type_temp = 5; break;
+            case 'fuel': $type_temp = 6; break;
+            case 'insurance': $type_temp = 7; break;
+            case 'entertainment': $type_temp = 8; break;
+            case 'culture': $type_temp = 9; break;
+            case 'trips': $type_temp = 10; break;
+            case 'mortgage payment': $type_temp = 11; break;
+            case 'salary': $type_temp = 12; break;
+            case 'bonus': $type_temp = 13; break;
+            case 'royalties': $type_temp = 14; break;
+            case 'interests': $type_temp = 15; break;
+            case 'gifts': $type_temp = 16; break;
+            case 'dividends': $type_temp = 17; break;
+            case 'product sales': $type_temp = 18; break;
+        }
+
+        $movement=Movement::create([
+            'account_id' => $account_id,
+            'movement_category_id' => $type_temp,
             'date' =>$request->input('date'), //photo
             'value' => $request->input('value'),
+            'start_balance' => $saldo_inicial,
+            'end_balance' => $saldo_final, 
             'description' =>$request->input('description'),
-            'account_id' => $account,
+            'type' => $request->input('category'),
             'created_at' => time() ,]);	
      
+        //$movement->fill($movement);
+        //$movement->save();
+        return redirect()->route('movements.index', ['account_id' => $account_id ]);
 
-        $movement->fill($movement);
-        $movement->save();
-
-        return redirect()->route('movements.index', ['account_id' => $account->id]);
     }
 
     public function edit($account_id, $movement_id){
@@ -101,18 +132,13 @@ class MovementsController extends Controller
             ->route('movements.update')
             ->with('success', 'Movement updated successfully!');
 
-
-
     }
 
-    public function destroy($id){
+    public function destroy($account_id, $movement_id){
     	
-    	$movement=Movement::findOrFail($id);
- 
-        $movements->delete();
-        return redirect()
-            ->route('movements')
-            ->with('success', 'Movement deleted successfully!');
+    	$movement=Movement::find($movement_id);
+        $movement->delete();
+        return redirect()->route('movements.index', ['account_id' => $account_id ]);        
     }
 
 }

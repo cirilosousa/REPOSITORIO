@@ -63,7 +63,7 @@
     <div class="form-group row">
         <label for="document_id" class="col-md-4 col-form-label text-md-right">{{ __('Document') }}</label>
         <div class="col-md-6">
-            <input id="document" type="file" class="form-control{{ $errors->has('document') ? ' is-invalid' : '' }}" name="document" value="{{ old('document') }}" required>
+            <input id="document" type="file" class="form-control{{ $errors->has('document') ? ' is-invalid' : '' }}" name="document" value="{{ old('document') }}">
              @if ($errors->has('document'))
             <span class="invalid-feedback">
             <strong>{{ $errors->first('document') }}</strong>
