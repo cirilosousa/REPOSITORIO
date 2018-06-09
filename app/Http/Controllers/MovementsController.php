@@ -93,7 +93,7 @@ class MovementsController extends Controller
             'movement_category_id' => $type_temp,
             'date' =>$request->input('date'), //photo
             'value' => $request->input('value'),
-            'start_balance' => $saldo_inicial,
+            'start_balance' => $saldo_final,
             'end_balance' => $saldo_final, 
             'description' =>$request->input('description'),
             'type' => $request->input('category'),
