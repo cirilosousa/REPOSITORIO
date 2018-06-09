@@ -72,7 +72,8 @@ class UsersController extends Controller
 
       
 
-
-
+    //envio email no update de user
+    Mail::to($request->email)
+    ->send (new UpdatedUser($user));
 
 }

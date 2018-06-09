@@ -96,5 +96,5 @@
 @else
     <h2>You dont have permission to view this user accounts</h2>
 @endif
-
+<a class='btn btn-xs btn-primary active emlinha' href="{{route('dashboard', $account->id)}}" >home</a>
 @endsection

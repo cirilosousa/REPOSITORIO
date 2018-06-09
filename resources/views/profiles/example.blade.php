@@ -11,6 +11,14 @@
             <div class="card">
 
                 <div class="card-header">This is just an example</div>
+                <td><img id="first_Page.png" 
+        src="{{Storage::url('app/storage/public/EXAMPLE/first_Page.png')}}"
+      width="100"/>
+</td>
+             </div>   
+
+                
+
  
 			</div>
 		</div>

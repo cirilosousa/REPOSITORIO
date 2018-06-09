@@ -45,9 +45,10 @@
             </tbody>
 
         </table>
+
     @else
         <h2>No movements found</h2>
     @endif
-
+<a class='btn btn-xs btn-primary active emlinha' href="{{route('dashboard', $account->id)}}" >home</a>
 @endsection
 

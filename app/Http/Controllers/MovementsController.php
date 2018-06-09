@@ -93,7 +93,7 @@ class MovementsController extends Controller
             'movement_category_id' => $type_temp,
             'date' =>$request->input('date'), //photo
             'value' => $request->input('value'),
-            'start_balance' => $saldo_final,
+            'start_balance' => $saldo_inicial,
             'end_balance' => $saldo_final, 
             'description' =>$request->input('description'),
             'type' => $request->input('category'),
@@ -118,19 +118,23 @@ class MovementsController extends Controller
     {
     	$movement=Movement::findOrFail($movement_id);
     	$account=Account::findOrFail($account_id);
-        $movements=Validator::make($data, [
+       
+        $request->validate([
+            'date' => 'required|date', //|date_format:Y-m-d', //photo
+            'value' => 'required|numeric| min:0.01|max:5000',
+            'description' => 'string|min:0|max:255',    
+        ]);
+        $movement=Movement::update([
             'movement_category_id' => 'required',
             'type' => 'required',
             'date' => 'required|date|date_format:Y-m-d', //photo
             'value' => 'required|numeric| min:0.05|max:5000',
             'description' => 'string|min:0|max:255',
         ]);
-        $movements->fill($request);
-        $movements->save();
+        //$movements->fill($request);
+       // $movements->save();
 
-        return redirect()
-            ->route('movements.update')
-            ->with('success', 'Movement updated successfully!');
+        return redirect()->route('movements.index', ['account_id' => $account_id ]);
 
     }
 

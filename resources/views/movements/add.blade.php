@@ -22,11 +22,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Create Movement') }}
                                 </button>
-<<<<<<< HEAD
-                             
-=======
-        <a class="btn btn-default" href="{{ route('movements.index', $account->id)}}">Cancel</a>
->>>>>>> 8b64b5a3da881a5e535e318876514ac72acdae69
+                             </div>
     </div>
 </form>
 
