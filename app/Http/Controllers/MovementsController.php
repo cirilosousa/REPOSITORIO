@@ -98,7 +98,9 @@ class MovementsController extends Controller
             'description' =>$request->input('description'),
             'type' => $request->input('category'),
             'created_at' => time() ,]);	
-     
+ 
+        $account->update(['current_balance' => $saldo_final ]);    
+
         //$movement->fill($movement);
         //$movement->save();
         return redirect()->route('movements.index', ['account_id' => $account_id ]);
