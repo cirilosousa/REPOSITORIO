@@ -64,7 +64,7 @@
                                     </form>
                                 @endif
 
-                                <form action="/account/{{$account->id}}" method="POST" role="form" class="emlinha">
+                                <form action="/account/{{$account->id}}/edit" method="GET" role="form" class="emlinha">
                                     {{ csrf_field() }}
                                     <button class="btn btn-xs btn-primary active">Edit</button>
                                 </form>             

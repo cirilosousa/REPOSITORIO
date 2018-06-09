@@ -22,7 +22,6 @@
             </thead>
         
             <tbody>
-
             
                 @foreach ($movements as $movement)
                     <tr>              
