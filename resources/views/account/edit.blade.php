@@ -1,23 +1,42 @@
 @extends('layouts.app')
-@section('title', 'Create Account')
+@section('title', 'Edit Account')
 
 @section('content')
-
-@if (count($errors) > 0)
-    @include('shared.errors')
-@endif
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Create Account') }}</div>
+                <div class="card-header">{{ __('Edit Account') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('account.store') }}">
-                        @csrf
+                    <form method="POST" action="{{ route('account.update') }}">
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
 
+                        <div class="form-group row">
+                            <label for="account_type_id" class="col-md-4 col-form-label text-md-right">{{ __('Account Type') }}</label>
 
+                            <div class="col-md-6">
+                                <select name="account_type_id">
+                                    <option value="1" selected>
+                                    Bank Account
+                                    </option>
+                                    <option value="2">
+                                    Pocket Money
+                                    </option>
+                                    <option value="3">
+                                    PayPal Account
+                                    </option>
+                                    <option value="4">
+                                    Credit Card
+                                    </option>
+                                    <option value="5">
+                                    Meal Card 
+                                    </option>     
+                                </select>  
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="code" class="col-md-4 col-form-label text-md-right">{{ __('Code') }}</label>

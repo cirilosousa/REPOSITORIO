@@ -22,7 +22,6 @@
             </thead>
         
             <tbody>
-
             
                 @foreach ($movements as $movement)
                     <tr>              
@@ -34,8 +33,8 @@
 
                         <td>
                             <a class="btn btn-xs btn-primary active emlinha" href="/movements/{{$movement->account_id}}/{{$movement->id}}">Edit</a>   
-
-                            <form action="movements/{{$movement->account_id}}/{{$movement->id}}" method="POST" role="form" class="emlinha">
+                            
+                            <form action="/movements/{{$movement->account_id}}/{{$movement->id}}" method="POST" role="form" class="emlinha">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <button class="btn btn-xs btn-danger active">Delete</button>

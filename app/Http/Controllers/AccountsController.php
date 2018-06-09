@@ -11,22 +11,10 @@ use SoftDeletes;
 use Auth;
 
 
-class AccountsController extends Controller
-{
+class AccountsController extends Controller{
 
-	  public function __construct() {
+	public function __construct() {
         $this->middleware('auth'); //->except('index');
-    }
-
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'account_type_id' => 'required|string|max:1',
-            'code' => 'required|string|max:255|unique:accounts',
-            'date' => 'required',
-            'start_balance' => 'required|string|max:20',
-            'start_description' => 'string|max:255',
-        ]);
     }
 
     public function fullindex($id){
@@ -35,7 +23,6 @@ class AccountsController extends Controller
  						    ->get();        
     	return view('account.index', compact('accounts'), compact('id'));
     }
-
 
     public function openedindex($id){
       $accounts = Account::where('owner_id', $id)
@@ -46,7 +33,7 @@ class AccountsController extends Controller
     public function closedindex($id){
    		$accounts = Account::onlyTrashed()
    						  ->where('owner_id', $id)
-   					    ->get();   
+   					      ->get();   
     	return view('account.index', compact('accounts'), compact('id'));
     }
 
@@ -75,11 +62,15 @@ class AccountsController extends Controller
         return view('account.add', compact('user'));
     }
 
+    public function edit(Account $account){
+        return view('account.edit', compact('account'));
+    }
+
     public function store(Request $request){
 
         $request->validate([  
             'account_type_id' => 'required|integer|between:1,5',
-            'code' => 'required|integer|unique:accounts',
+            'code' => 'required|string|unique:accounts',
             'date' => 'required|date',
             'start_balance' => 'required|integer|between:1,20000',
             'description' => 'string',],[ ]);
@@ -95,11 +86,21 @@ class AccountsController extends Controller
             'owner_id' => $user,
             'created_at' => time() ,]);
 
-
         return redirect()->route('accounts.index', ['id' => $account->owner_id]);
     }
 
-    public function edit(){
-     
+    public function update(Request $request){
+
+        $request->validate([  
+            'account_type_id' => 'required|integer|between:1,5',
+            'code' => 'required|string|unique:accounts',
+            'start_balance' => 'required|integer|between:1,20000',
+            'description' => 'string',],[ ]);
+
+        $account = Account::update([
+            'account_type_id' => $request->input('account_type_id'),
+            'code' => $request->input('code'),
+            'start_balance' => $request->input('start_balance'),
+            'description' => $request->input('description'),]);
     }
 }

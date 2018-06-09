@@ -36,7 +36,6 @@ Route::get('/profiles', 'Profiles\ProfilesController@index')->name('profiles');
 Route::get('/me/associates', 'Profiles\AssociatesController@index')->name('me.associates');
 Route::get('/me/associate-of', 'Profiles\AssociateOfController@index')->name('me.associate_of');
 
-
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); 
 
 //accounts
@@ -47,18 +46,17 @@ Route::delete('/account/{account}', 'AccountsController@destroy')->name('account
 Route::patch('/account/{account}/close', 'AccountsController@close')->name('account.close');
 Route::patch('/account/{account}/reopen', 'AccountsController@reopen')->name('account.reopen');
 Route::get('/account/create', 'AccountsController@create')->name('account.create');
+Route::get('/account/{account}/edit', 'AccountsController@edit')->name('account.edit');
 Route::post('/account/', 'AccountsController@store')->name('account.store');
-Route::put('/account/{account}', 'AccountsController@edit')->name('account.edit');
+Route::put('/account/update', 'AccountsController@update')->name('account.update');
 
 //movements
-Route::get('/movements/{account}', 'MovementsController@index')->name('movements');
+Route::get('/movements/{account}', 'MovementsController@index')->name('movements.index');
 Route::get('movements/{account}/create', 'MovementsController@create')->name('movements.create');
 Route::post('movements/{account}/create', 'MovementsController@store')->name('movements.store');
 Route::get('movements/{account}/{movement}', 'MovementsController@edit')->name('movements.edit');
-Route::put('movements/{account}/{movement}', 'MovementsController@update')->name('movementsupdate');
+Route::put('movements/{account}/{movement}', 'MovementsController@update')->name('movements.update');
 Route::delete('movements/{account}/{movement}', 'MovementsController@destroy')->name('movements.destroy');
-
-
 
 //Documents
 Route::get('getfile/{path}', 'DocumentsController@getfile')->name('documents');
